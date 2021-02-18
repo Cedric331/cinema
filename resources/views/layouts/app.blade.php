@@ -42,11 +42,37 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ __('Nos Produits') }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li>
+                              <a class="dropdown-item" href="#">
+                                 {{ __('Nos Pizzas') }}
+                              </a>
+                           </li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li>
+                              <a class="dropdown-item" href="#">
+                                 {{ __('Nos Burgers') }}
+                              </a>
+                           </li>
+                           <li><hr class="dropdown-divider"></li>
+                           <li>
+                              <a class="dropdown-item" href="#">
+                                 {{ __('Nos Boissons') }}
+                              </a>
+                           </li>
+                        </ul>
+                      </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="#">{{ __('Nous Contacter') }}</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                  <ul class="navbar-nav ml-auto">
                      <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ __('Langue') }}

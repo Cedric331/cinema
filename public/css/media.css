@@ -1,0 +1,26 @@
+@media (max-width: 640px) {
+   #messageHome{
+      position:relative;
+      top:120px; 
+      left:160px;
+      width:264px;
+   }
+}
+
+@media (max-width: 440px) {
+   #messageHome{
+      position:relative;
+      top:100px; 
+      left:120px;
+      width:264px;
+   }
+}
+
+@media (max-width: 400px) {
+   #messageHome{
+      position:relative;
+      top:80px; 
+      left:80px;
+      width:264px;
+   }
+}

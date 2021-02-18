@@ -1,0 +1,42 @@
+*{
+   box-sizing: border-box;
+   margin:0;
+   padding:0;
+   max-width:100vw;
+}
+
+.container-fluid{
+   padding:0;
+   margin:0;
+}
+
+/* Image Home */
+
+#imageHome{
+   max-height:500px;
+   width:100vw;
+   position:absolute;
+   z-index:1
+}
+
+#messageHome{
+   position:relative;
+   top:160px; 
+   left:360px;
+   width:264px;
+   z-index:2;
+   font-size:200%;
+   border-radius: 5px;
+}
+
+.btn-white{
+   background-color:rgb(255, 255, 255);
+   transition: all 1s;
+}
+
+.btn-white:hover{
+   transition: all 1s;
+   background-color:rgb(54, 55, 56);
+   color:white;
+   transform: scale(1.1);
+}

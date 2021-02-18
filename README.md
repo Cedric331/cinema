@@ -1,2 +1,2 @@
-# cinema
-Site avec Laravel VueJS sur le thème du cinéma
+# Pizzeria
+Site avec Laravel VueJS  pour une pizzeria

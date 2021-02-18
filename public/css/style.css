@@ -12,6 +12,11 @@
 
 /* NavBar */
 
+#logo{
+   max-width: 70px;
+   max-height: 70px;
+}
+
 .img-flag{
    max-height:20px;
    max-width:25px;

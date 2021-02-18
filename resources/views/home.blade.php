@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-
+<a href="locale/en">English</a>
+<a href="locale/fr">Français</a>
    <div class="container-fluid">
       <div>
          <img id="imageHome" src="{{ asset('/image/pizza-home.jpg') }}">

@@ -47,6 +47,24 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                     <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ __('Langue') }}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <li>
+                              <a class="dropdown-item" href="locale/fr">
+                                 <img class="img-flag mr-2" src="{{ asset('/image/flag-french.png') }}">{{ __('Français') }}
+                              </a>
+                           </li>
+                          <li><hr class="dropdown-divider"></li>
+                          <li>
+                              <a class="dropdown-item" href="locale/en">
+                                 <img class="img-flag mr-2" src="{{ asset('/image/flag-gb.png') }}">{{ __('Anglais') }}
+                              </a>
+                           </li>
+                        </ul>
+                      </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

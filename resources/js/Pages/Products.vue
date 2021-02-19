@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid d-flex justify-content-between">
         <div class="row">
-            <div class="col-8 mt-5">
+            <div class="col-md-8 col-sm-12 mt-5">
                 <section class="dark-grey-text">
 
                     <h2 class="text-center font-weight-bold mb-4 pb-2">Nos Produits</h2>
@@ -33,7 +33,7 @@
                 </section>
             </div>
 
-            <cart class="col-3"></cart>
+            <cart class="col-sm-12 col-md-4"></cart>
         </div>
     </div>
 </template>

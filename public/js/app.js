@@ -41003,7 +41003,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "bg-dark" }, [
-      _c("h3", [_vm._v("Panier")]),
+      _c("h3", { staticClass: "text-white" }, [_vm._v("Panier")]),
       _vm._v(" "),
       _c("div", { staticClass: "list-group" }, [
         _c(
@@ -41046,7 +41046,11 @@ var render = function() {
       _c(
         "div",
         { staticClass: "row" },
-        [_vm._m(0), _vm._v(" "), _c("cart", { staticClass: "col-3" })],
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("cart", { staticClass: "col-sm-12 col-md-4" })
+        ],
         1
       )
     ]
@@ -41057,7 +41061,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-8 mt-5" }, [
+    return _c("div", { staticClass: "col-md-8 col-sm-12 mt-5" }, [
       _c("section", { staticClass: "dark-grey-text" }, [
         _c("h2", { staticClass: "text-center font-weight-bold mb-4 pb-2" }, [
           _vm._v("Nos Produits")
@@ -53474,11 +53478,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @inertiajs/progress */ "./node_modules/@inertiajs/progress/dist/index.js");
 /* harmony import */ var _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _vue_translations_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./vue-translations.js */ "./resources/js/vue-translations.js");
+/* harmony import */ var _vue_translations_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_vue_translations_js__WEBPACK_IMPORTED_MODULE_3__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
+
+var Lang = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module 'lang.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+
+
+var lang = new Lang();
+lang.setMessages(_vue_translations_js__WEBPACK_IMPORTED_MODULE_3___default.a);
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.filter('trans', function () {
+  return lang.get.apply(lang, arguments);
+});
 _inertiajs_progress__WEBPACK_IMPORTED_MODULE_2__["InertiaProgress"].init();
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(_inertiajs_inertia_vue__WEBPACK_IMPORTED_MODULE_0__["plugin"]);
 var el = document.getElementById('app');
@@ -53539,6 +53554,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/vue-translations.js":
+/*!******************************************!*\
+  !*** ./resources/js/vue-translations.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
 
 /***/ }),
 

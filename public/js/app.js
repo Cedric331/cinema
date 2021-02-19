@@ -4845,10 +4845,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      products: allProducts
+      products: this.array
     };
   },
-  props: ['allProducts']
+  props: ['array']
 });
 
 /***/ }),
@@ -4892,13 +4892,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    add: function add(id) {
+      var _this = this;
+
+      axios.post('/cart/add/' + id).then(function (res) {
+        _this.count++;
+        _this.array = res.data;
+      })["catch"](function (error) {
+        if (error.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    }
+  },
   data: function data() {
     return {
       products: this.listProducts,
-      product: ''
+      product: '',
+      array: this.items,
+      count: 0
     };
   },
-  props: ['listProducts'],
+  props: ['listProducts', 'items'],
   components: {
     Cart: _Cart__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -43294,7 +43310,7 @@ var render = function() {
                     staticClass: "btn btn-outline-success btn-rounded btn-md",
                     on: {
                       click: function($event) {
-                        return _vm.add(product)
+                        return _vm.add(product.id)
                       }
                     }
                   },
@@ -43307,7 +43323,11 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("cart", { staticClass: "col-2", attrs: { allProducts: _vm.array } })
+      _c("cart", {
+        key: _vm.count,
+        staticClass: "col-2",
+        attrs: { array: _vm.array }
+      })
     ],
     1
   )

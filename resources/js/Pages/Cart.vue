@@ -10,12 +10,13 @@
 
 <script>
     export default {
-      data () {
-        return {
-           products: allProducts
-        }
-      },
-      props: ['allProducts'],
+  data () {
+    return {
+       products: this.array
+    }
+  },
+      props: ['array'],
+
     }
 
 </script>

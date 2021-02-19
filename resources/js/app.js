@@ -14,8 +14,8 @@ export const i18n = new VueI18n({
    fallbackLocale: document.documentElement.lang,
    messages: {
       en: {
-        'Panier': "Cart",
-        'Nos Produits': 'Our Products'
+        "Panier": "Cart",
+        "Nos Produits": "Our Products"
       },
   }
  });

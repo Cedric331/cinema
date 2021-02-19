@@ -55700,8 +55700,8 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
   fallbackLocale: document.documentElement.lang,
   messages: {
     en: {
-      'Panier': "Cart",
-      'Nos Produits': 'Our Products'
+      "Panier": "Cart",
+      "Nos Produits": "Our Products"
     }
   }
 });

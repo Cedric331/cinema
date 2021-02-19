@@ -58,3 +58,9 @@ body{
 
 /* Fin Image Home */
 
+/* Products */
+
+.imageProduct{
+   height: 200px;
+   width: 200px;
+}

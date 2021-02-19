@@ -1,45 +1,41 @@
 <template>
-    <div class="container-fluid d-flex justify-content-between">
-        <div class="row">
-            <div class="col-md-8 col-sm-12 mt-5">
-                <section class="dark-grey-text">
+    <div class="container-fluid d-flex justify-content-around">
 
-                    <h2 class="text-center font-weight-bold mb-4 pb-2">{{ $t("Nos Produits") }}</h2>
-                    <div class="row align-items-center">
+        <section class="dark-grey-text text-center col-10">
+            <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
 
-                        <div class="col-lg-5 col-xl-4">
-                            <div class="view overlay rounded z-depth-1-half mb-lg-0 mb-4">
-                                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg"
-                                    alt="Sample image">
-                                <a>
-                                    <div class="mask rgba-white-slight"></div>
-                                </a>
-                            </div>
-                        </div>
+            <div class="row">
+                <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-12 mb-4">
 
-                        <div class="col-lg-7 col-xl-8">
-                            <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
-                            <p class="dark-grey-text">Nam libero tempore, cum soluta nobis est eligendi optio cumque
-                                nihil impedit
-                                quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis
-                                dolor repellendus
-                                et aut officiis cum soluta nobis est eligendi placeat facere aut rerum.</p>
-                            <p>by <a class="font-weight-bold">Jessica Clark</a>, 19/04/2018</p>
-                            <a class="btn btn-primary btn-md mx-0 btn-rounded">Read more</a>
-                        </div>
-
+                    <div class="view overlay rounded z-depth-2 mb-4">
+                        <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
+                        <a>
+                            <div class="mask rgba-white-slight"></div>
+                        </a>
                     </div>
-                    <hr class="my-5">
-                </section>
-            </div>
 
-            <cart class="col-sm-12 col-md-4"></cart>
-        </div>
+                    <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
+                    <p class="dark-grey-text"></p>
+                    <a @click="add(product)" class="btn btn-outline-success btn-rounded btn-md">{{ $t('Ajouter')}}</a>
+                </div>
+                
+            </div>
+            
+        </section>
+        <cart :allProducts="array" class="col-2"></cart>
     </div>
 </template>
 <script>
     import Cart from './Cart'
     export default {
+
+        data() {
+            return {
+                products: this.listProducts,
+                product: ''
+            }
+        },
+        props: ['listProducts'],
         components: {
             Cart,
         },

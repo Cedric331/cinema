@@ -4842,7 +4842,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      products: allProducts
+    };
+  },
+  props: ['allProducts']
+});
 
 /***/ }),
 
@@ -4883,20 +4890,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      products: this.listProducts,
+      product: ''
+    };
+  },
+  props: ['listProducts'],
   components: {
     Cart: _Cart__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -43207,26 +43209,25 @@ var render = function() {
   return _c("div", { staticClass: "bg-dark" }, [
     _c("h3", { staticClass: "text-white" }, [_vm._v(_vm._s(_vm.$t("Panier")))]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "div",
+      { staticClass: "list-group" },
+      _vm._l(_vm.products, function(product) {
+        return _c(
+          "button",
+          {
+            key: product.id,
+            staticClass: "list-group-item list-group-item-action",
+            attrs: { type: "button" }
+          },
+          [_vm._v(_vm._s(product.name))]
+        )
+      }),
+      0
+    )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "list-group" }, [
-      _c(
-        "button",
-        {
-          staticClass: "list-group-item list-group-item-action",
-          attrs: { type: "button" }
-        },
-        [_vm._v("Cras justo odio")]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -43250,31 +43251,65 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container-fluid d-flex justify-content-between" },
+    { staticClass: "container-fluid d-flex justify-content-around" },
     [
-      _c(
-        "div",
-        { staticClass: "row" },
-        [
-          _c("div", { staticClass: "col-md-8 col-sm-12 mt-5" }, [
-            _c("section", { staticClass: "dark-grey-text" }, [
-              _c(
-                "h2",
-                { staticClass: "text-center font-weight-bold mb-4 pb-2" },
-                [_vm._v(_vm._s(_vm.$t("Nos Produits")))]
-              ),
-              _vm._v(" "),
-              _vm._m(0),
-              _vm._v(" "),
-              _c("hr", { staticClass: "my-5" })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("cart", { staticClass: "col-sm-12 col-md-4" })
-        ],
-        1
-      )
-    ]
+      _c("section", { staticClass: "dark-grey-text text-center col-10" }, [
+        _c("h2", { staticClass: "font-weight-bold mb-4 mt-2 pb-2" }, [
+          _vm._v(_vm._s(_vm.$t("Nos Produits")))
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.products, function(product) {
+            return _c(
+              "div",
+              { key: product.id, staticClass: "col-lg-3 col-md-12 mb-4" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "view overlay rounded z-depth-2 mb-4" },
+                  [
+                    _c("img", {
+                      staticClass: "img-fluid imageProduct",
+                      attrs: {
+                        src: "/image/products/" + product.image,
+                        alt: product.name
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm._m(0, true)
+                  ]
+                ),
+                _vm._v(" "),
+                _c("h4", { staticClass: "font-weight-bold mb-3" }, [
+                  _c("strong", [_vm._v(_vm._s(product.name))])
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "dark-grey-text" }),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "btn btn-outline-success btn-rounded btn-md",
+                    on: {
+                      click: function($event) {
+                        return _vm.add(product)
+                      }
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.$t("Ajouter")))]
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("cart", { staticClass: "col-2", attrs: { allProducts: _vm.array } })
+    ],
+    1
   )
 }
 var staticRenderFns = [
@@ -43282,49 +43317,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row align-items-center" }, [
-      _c("div", { staticClass: "col-lg-5 col-xl-4" }, [
-        _c(
-          "div",
-          { staticClass: "view overlay rounded z-depth-1-half mb-lg-0 mb-4" },
-          [
-            _c("img", {
-              staticClass: "img-fluid",
-              attrs: {
-                src: "https://mdbootstrap.com/img/Photos/Others/images/49.jpg",
-                alt: "Sample image"
-              }
-            }),
-            _vm._v(" "),
-            _c("a", [_c("div", { staticClass: "mask rgba-white-slight" })])
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-lg-7 col-xl-8" }, [
-        _c("h4", { staticClass: "font-weight-bold mb-3" }, [
-          _c("strong", [_vm._v("Title of the news")])
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "dark-grey-text" }, [
-          _vm._v(
-            "Nam libero tempore, cum soluta nobis est eligendi optio cumque\n                            nihil impedit\n                            quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis\n                            dolor repellendus\n                            et aut officiis cum soluta nobis est eligendi placeat facere aut rerum."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v("by "),
-          _c("a", { staticClass: "font-weight-bold" }, [
-            _vm._v("Jessica Clark")
-          ]),
-          _vm._v(", 19/04/2018")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "btn btn-primary btn-md mx-0 btn-rounded" }, [
-          _vm._v("Read more")
-        ])
-      ])
-    ])
+    return _c("a", [_c("div", { staticClass: "mask rgba-white-slight" })])
   }
 ]
 render._withStripped = true
@@ -55701,7 +55694,8 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
   messages: {
     en: {
       "Panier": "Cart",
-      "Nos Produits": "Our Products"
+      "Nos Produits": "Our Products",
+      "Ajouter": "Add"
     }
   }
 });

@@ -15,7 +15,8 @@ export const i18n = new VueI18n({
    messages: {
       en: {
         "Panier": "Cart",
-        "Nos Produits": "Our Products"
+        "Nos Produits": "Our Products",
+        "Ajouter": "Add"
       },
   }
  });

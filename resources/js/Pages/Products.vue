@@ -4,7 +4,7 @@
             <div class="col-md-8 col-sm-12 mt-5">
                 <section class="dark-grey-text">
 
-                    <h2 class="text-center font-weight-bold mb-4 pb-2">Nos Produits</h2>
+                    <h2 class="text-center font-weight-bold mb-4 pb-2">{{ $t("Nos Produits") }}</h2>
                     <div class="row align-items-center">
 
                         <div class="col-lg-5 col-xl-4">

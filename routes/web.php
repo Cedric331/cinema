@@ -24,5 +24,7 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/products', 'ProductsController@index')->name('products-index');
+
 Auth::routes();
 

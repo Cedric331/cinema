@@ -28,8 +28,6 @@
    @if(empty($page))
       {{ $page = '' }}
    @endif
-   @inertia
-   
     <div>
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container-fluid">
@@ -52,7 +50,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li>
-                              <a class="dropdown-item" href="#">
+                              <a class="dropdown-item" href="{{ route('products-index') }}">
                                  {{ __('Nos Pizzas') }}
                               </a>
                            </li>
@@ -134,7 +132,7 @@
                 </div>
             </div>
         </nav>
-
+        @inertia
         <main id="app">
             @yield('content')
         </main>

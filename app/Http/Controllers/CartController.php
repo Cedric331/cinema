@@ -17,46 +17,63 @@ class CartController extends Controller
     {
       $product = Product::find($id);
 
-      $add = \Cart::session(6)->add([
+      $add = \Cart::session(7)->add([
          'id' => $product->id,
          'name' => $product->name,
          'price' => $product->price,
          'quantity' => 1
      ]);
 
-     $items = \Cart::session(6)->getContent();
-     
-     return response()->json($items, 200);
+     $total = \Cart::session(7)->getTotal();
+     $items = \Cart::session(7)->getContent();
+     $array = [$items, $total];
+
+     return response()->json($array, 200);
     }
 
     public function removeItem($id)
     {
       $product = Product::findOrFail($id);
-      $item = \Cart::session(6)->get($product->id);
-
+      $item = \Cart::session(7)->get($product->id);
+ 
       if ($item->quantity == 1) 
       {
-         \Cart::session(6)->remove($id);
+         \Cart::session(7)->remove($id);
       }
       else 
       {
-         \Cart::session(6)->update($product->id, array(
+         \Cart::session(7)->update($product->id, array(
             'quantity' => -1, 
           ));
       }
 
-     $items = \Cart::session(6)->getContent();
+      $total = \Cart::session(7)->getTotal();
+      $items = \Cart::session(7)->getContent();
+      $array = [$items, $total];
      
-     return response()->json($items, 200);
+     return response()->json($array, 200);
     }
+    
 
     public function deleteItem($id)
     {
       $product = Product::findOrFail($id);
-      \Cart::session(6)->remove($id);
+      \Cart::session(7)->remove($product->id);
 
-     $items = \Cart::session(6)->getContent();
+      $total = \Cart::session(7)->getTotal();
+      $items = \Cart::session(7)->getContent();
+      $array = [$items, $total];
      
-     return response()->json($items, 200);
+     return response()->json($array, 200);
+    }
+
+    public function deleteCart()
+    {
+      \Cart::session(7)->clear();
+      $total = \Cart::session(7)->getTotal();
+      $items = \Cart::session(7)->getContent();
+      $array = [$items, $total];
+      
+     return response()->json($array, 200);
     }
 }

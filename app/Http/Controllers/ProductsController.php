@@ -12,11 +12,13 @@ class ProductsController extends Controller
     public function index()
     {
        $products = Product::All();
-       $items = \Cart::session(6)->getContent();
-
+       $items = \Cart::session(7)->getContent();
+       $total= \Cart::session(7)->getTotal();
+       
        return Inertia::render('Products',[
           'listProducts' => $products,
-          'items' => $items
+          'items' => $items,
+          'total' => $total
        ]);
     }
 }

@@ -22,7 +22,7 @@
             </div>
             
         </section>
-        <cart :array="array" :key="count"></cart>
+        <cart :array="array" :sumTotal="sumTotal" :key="count"></cart>
     </div>
 </template>
 <script>
@@ -32,8 +32,10 @@
             add(id){
                axios.post('/cart/add/'+id)
                .then(res => {
+                   console.log(res.data)
                   this.count++
-                  this.array = res.data
+                  this.array = res.data[0]
+                  this.sumTotal = res.data[1]
                }).catch(error => {
                   if (error.response.status == 401) {
                        window.location = '/login'
@@ -46,11 +48,12 @@
             return {
                 products: this.listProducts,
                 product: '',
+                sumTotal: this.total,
                 array: this.items,
                 count:0
             }
         },
-        props: ['listProducts', 'items'],
+        props: ['listProducts', 'items', 'total'],
         components: {
             Cart,
         },

@@ -16,8 +16,21 @@ export const i18n = new VueI18n({
       en: {
         "Panier": "Cart",
         "Nos Produits": "Our Products",
-        "Ajouter": "Add"
+        "Ajouter": "Add",
+        "Vider le Panier": "Clear the Cart",
+        "quantité": "quantity",
+        "prix": "price",
+        "Total de la commande": "Total order",
       },
+      fr: {
+         "Panier": "Panier",
+         "Nos Produits": "Nos Produits",
+         "Ajouter": "Ajouter",
+         "Vider le Panier": "Vider le Panier",
+         "quantité": "quantité",
+         "prix": "prix",
+         "Total de la commande": "Total de la commande",
+       },
   }
  });
 

@@ -4850,6 +4850,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     add: function add(id) {
@@ -4857,7 +4860,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/cart/add/' + id).then(function (res) {
         _this.count++;
-        _this.products = res.data;
+        _this.products = res.data[0];
+        _this.total = res.data[1];
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';
@@ -4869,7 +4873,8 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/cart/remove/' + id).then(function (res) {
         _this2.count++;
-        _this2.products = res.data;
+        _this2.products = res.data[0];
+        _this2.total = res.data[1];
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';
@@ -4881,7 +4886,21 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/cart/deleteItem/' + id).then(function (res) {
         _this3.count++;
-        _this3.products = res.data;
+        _this3.products = res.data[0];
+        _this3.total = res.data[1];
+      })["catch"](function (error) {
+        if (error.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    },
+    deleteCart: function deleteCart() {
+      var _this4 = this;
+
+      axios.post('/cart/deleteCart').then(function (res) {
+        _this4.count++;
+        _this4.products = res.data[0];
+        _this4.total = res.data[1];
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';
@@ -4891,10 +4910,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      products: this.array
+      products: this.array,
+      total: this.sumTotal
     };
   },
-  props: ['array']
+  props: ['array', 'sumTotal']
 });
 
 /***/ }),
@@ -4943,8 +4963,10 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post('/cart/add/' + id).then(function (res) {
+        console.log(res.data);
         _this.count++;
-        _this.array = res.data;
+        _this.array = res.data[0];
+        _this.sumTotal = res.data[1];
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';
@@ -4956,11 +4978,12 @@ __webpack_require__.r(__webpack_exports__);
     return {
       products: this.listProducts,
       product: '',
+      sumTotal: this.total,
       array: this.items,
       count: 0
     };
   },
-  props: ['listProducts', 'items'],
+  props: ['listProducts', 'items', 'total'],
   components: {
     Cart: _Cart__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -43268,7 +43291,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-dark col-sm-12 col-md-3 " }, [
+  return _c("div", { staticClass: "bg-dark col-sm-12 col-md-3" }, [
     _c("h3", { staticClass: "text-white text-center" }, [
       _vm._v(_vm._s(_vm.$t("Panier")))
     ]),
@@ -43277,25 +43300,76 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      { staticClass: "list-group my-2 text-center" },
+      { staticClass: "list-group my-3 text-center" },
       _vm._l(_vm.products, function(product) {
         return _c("li", { key: product.id, staticClass: "mb-2" }, [
           _c(
             "button",
             {
               staticClass:
-                "m-auto list-group-item list-group-item-action col-10",
+                "m-auto list-group-item list-group-item-action col-10 position-relative",
               attrs: { type: "button" }
             },
             [
               _vm._v(
                 _vm._s(product.name) +
-                  " - quantité: " +
+                  " - " +
+                  _vm._s(_vm.$t("quantité")) +
+                  ": " +
                   _vm._s(product.quantity) +
-                  "  - prix:  " +
+                  "  - " +
+                  _vm._s(_vm.$t("prix")) +
+                  ":  " +
                   _vm._s(product.price) +
                   "€\n           "
               ),
+              product.quantity > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass:
+                        "position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
+                      staticStyle: { "font-size": "10px" },
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteItem(product.id)
+                        }
+                      }
+                    },
+                    [_vm._v("X")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              product.quantity > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-warning col-3",
+                      on: {
+                        click: function($event) {
+                          return _vm.remove(product.id)
+                        }
+                      }
+                    },
+                    [_vm._v("-")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              product.quantity == 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger col-3",
+                      on: {
+                        click: function($event) {
+                          return _vm.remove(product.id)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-trash" })]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "button",
                 {
@@ -43307,19 +43381,6 @@ var render = function() {
                   }
                 },
                 [_vm._v("+")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-warning col-3",
-                  on: {
-                    click: function($event) {
-                      return _vm.remove(product.id)
-                    }
-                  }
-                },
-                [_vm._v("-")]
               )
             ]
           )
@@ -43328,9 +43389,37 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _c("hr", { staticClass: "text-white my-1" }),
+    _c("h5", { staticClass: "text-center" }, [
+      _vm.total != "0,00"
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-light",
+              on: {
+                click: function($event) {
+                  return _vm.deleteCart()
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.$t("Vider le Panier")))]
+          )
+        : _vm._e()
+    ]),
     _vm._v(" "),
-    _c("h4", { staticClass: "text-white" }, [_vm._v("Total: ")])
+    _vm.total != "0,00"
+      ? _c("hr", { staticClass: "text-white my-1" })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.total != "0,00"
+      ? _c("h4", { staticClass: "text-white" }, [
+          _vm._v(
+            _vm._s(_vm.$t("Total de la commande")) +
+              ": " +
+              _vm._s(_vm.total) +
+              "€"
+          )
+        ])
+      : _vm._e()
   ])
 }
 var staticRenderFns = []
@@ -43417,7 +43506,10 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _c("cart", { key: _vm.count, attrs: { array: _vm.array } })
+      _c("cart", {
+        key: _vm.count,
+        attrs: { array: _vm.array, sumTotal: _vm.sumTotal }
+      })
     ],
     1
   )
@@ -55805,7 +55897,20 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
     en: {
       "Panier": "Cart",
       "Nos Produits": "Our Products",
-      "Ajouter": "Add"
+      "Ajouter": "Add",
+      "Vider le Panier": "Clear the Cart",
+      "quantité": "quantity",
+      "prix": "price",
+      "Total de la commande": "Total order"
+    },
+    fr: {
+      "Panier": "Panier",
+      "Nos Produits": "Nos Produits",
+      "Ajouter": "Ajouter",
+      "Vider le Panier": "Vider le Panier",
+      "quantité": "quantité",
+      "prix": "prix",
+      "Total de la commande": "Total de la commande"
     }
   }
 });

@@ -4846,6 +4846,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     add: function add(id) {
@@ -4866,6 +4870,18 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/cart/remove/' + id).then(function (res) {
         _this2.count++;
         _this2.products = res.data;
+      })["catch"](function (error) {
+        if (error.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    },
+    deleteItem: function deleteItem(id) {
+      var _this3 = this;
+
+      axios.post('/cart/deleteItem/' + id).then(function (res) {
+        _this3.count++;
+        _this3.products = res.data;
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';
@@ -43252,63 +43268,70 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "bg-dark" },
-    [
-      _c("h3", { staticClass: "text-white" }, [
-        _vm._v(_vm._s(_vm.$t("Panier")))
-      ]),
-      _vm._v(" "),
+  return _c("div", { staticClass: "bg-dark col-sm-12 col-md-3 " }, [
+    _c("h3", { staticClass: "text-white text-center" }, [
+      _vm._v(_vm._s(_vm.$t("Panier")))
+    ]),
+    _vm._v(" "),
+    _c("hr", { staticClass: "text-white my-1" }),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "list-group my-2 text-center" },
       _vm._l(_vm.products, function(product) {
-        return _c("ul", { key: product.id, staticClass: "list-group my-2" }, [
-          _c("li", [
-            _c(
-              "button",
-              {
-                staticClass: "list-group-item list-group-item-action",
-                attrs: { type: "button" }
-              },
-              [
-                _vm._v(
-                  _vm._s(product.name) +
-                    " - quantité: " +
-                    _vm._s(product.quantity)
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: " btn btn-success",
-                on: {
-                  click: function($event) {
-                    return _vm.add(product.id)
+        return _c("li", { key: product.id, staticClass: "mb-2" }, [
+          _c(
+            "button",
+            {
+              staticClass:
+                "m-auto list-group-item list-group-item-action col-10",
+              attrs: { type: "button" }
+            },
+            [
+              _vm._v(
+                _vm._s(product.name) +
+                  " - quantité: " +
+                  _vm._s(product.quantity) +
+                  "  - prix:  " +
+                  _vm._s(product.price) +
+                  "€\n           "
+              ),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success col-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.add(product.id)
+                    }
                   }
-                }
-              },
-              [_vm._v("+")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: " btn btn-danger",
-                on: {
-                  click: function($event) {
-                    return _vm.remove(product.id)
+                },
+                [_vm._v("+")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-warning col-3",
+                  on: {
+                    click: function($event) {
+                      return _vm.remove(product.id)
+                    }
                   }
-                }
-              },
-              [_vm._v("-")]
-            )
-          ])
+                },
+                [_vm._v("-")]
+              )
+            ]
+          )
         ])
-      })
-    ],
-    2
-  )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("hr", { staticClass: "text-white my-1" }),
+    _vm._v(" "),
+    _c("h4", { staticClass: "text-white" }, [_vm._v("Total: ")])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -43336,65 +43359,65 @@ var render = function() {
     "div",
     { staticClass: "container-fluid d-flex justify-content-around" },
     [
-      _c("section", { staticClass: "dark-grey-text text-center col-10" }, [
-        _c("h2", { staticClass: "font-weight-bold mb-4 mt-2 pb-2" }, [
-          _vm._v(_vm._s(_vm.$t("Nos Produits")))
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row" },
-          _vm._l(_vm.products, function(product) {
-            return _c(
-              "div",
-              { key: product.id, staticClass: "col-lg-3 col-md-12 mb-4" },
-              [
-                _c(
-                  "div",
-                  { staticClass: "view overlay rounded z-depth-2 mb-4" },
-                  [
-                    _c("img", {
-                      staticClass: "img-fluid imageProduct",
-                      attrs: {
-                        src: "/image/products/" + product.image,
-                        alt: product.name
+      _c(
+        "section",
+        { staticClass: "dark-grey-text text-center col-sm-12 col-md-9" },
+        [
+          _c("h2", { staticClass: "font-weight-bold mb-4 mt-2 pb-2" }, [
+            _vm._v(_vm._s(_vm.$t("Nos Produits")))
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row" },
+            _vm._l(_vm.products, function(product) {
+              return _c(
+                "div",
+                { key: product.id, staticClass: "col-lg-3 col-md-12 mb-4" },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "view overlay rounded z-depth-2 mb-4" },
+                    [
+                      _c("img", {
+                        staticClass: "img-fluid imageProduct",
+                        attrs: {
+                          src: "/image/products/" + product.image,
+                          alt: product.name
+                        }
+                      }),
+                      _vm._v(" "),
+                      _vm._m(0, true)
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("h4", { staticClass: "font-weight-bold mb-3" }, [
+                    _c("strong", [_vm._v(_vm._s(product.name))])
+                  ]),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "dark-grey-text" }),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-outline-success btn-rounded btn-md",
+                      on: {
+                        click: function($event) {
+                          return _vm.add(product.id)
+                        }
                       }
-                    }),
-                    _vm._v(" "),
-                    _vm._m(0, true)
-                  ]
-                ),
-                _vm._v(" "),
-                _c("h4", { staticClass: "font-weight-bold mb-3" }, [
-                  _c("strong", [_vm._v(_vm._s(product.name))])
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "dark-grey-text" }),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-outline-success btn-rounded btn-md",
-                    on: {
-                      click: function($event) {
-                        return _vm.add(product.id)
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.$t("Ajouter")))]
-                )
-              ]
-            )
-          }),
-          0
-        )
-      ]),
+                    },
+                    [_vm._v(_vm._s(_vm.$t("Ajouter")))]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        ]
+      ),
       _vm._v(" "),
-      _c("cart", {
-        key: _vm.count,
-        staticClass: "col-2",
-        attrs: { array: _vm.array }
-      })
+      _c("cart", { key: _vm.count, attrs: { array: _vm.array } })
     ],
     1
   )

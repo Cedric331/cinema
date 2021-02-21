@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid d-flex justify-content-around">
 
-        <section class="dark-grey-text text-center col-10">
+        <section class="dark-grey-text text-center col-sm-12 col-md-9">
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
 
             <div class="row">
@@ -22,7 +22,7 @@
             </div>
             
         </section>
-        <cart :array="array" :key="count" class="col-2"></cart>
+        <cart :array="array" :key="count"></cart>
     </div>
 </template>
 <script>

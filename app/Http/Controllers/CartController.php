@@ -12,6 +12,7 @@ class CartController extends Controller
    // {
    //     $this->middleware('auth');
    // }
+
     public function store($id)
     {
       $product = Product::find($id);
@@ -22,6 +23,37 @@ class CartController extends Controller
          'price' => $product->price,
          'quantity' => 1
      ]);
+
+     $items = \Cart::session(4)->getContent();
+     
+     return response()->json($items, 200);
+    }
+
+    public function remove($id)
+    {
+      $product = Product::findOrFail($id);
+      $item = \Cart::session(4)->get($product->id);
+
+      if ($item->quantity == 1) 
+      {
+         \Cart::session(4)->remove($id);
+      }
+      else 
+      {
+         \Cart::session(4)->update($product->id, array(
+            'quantity' => -1, 
+          ));
+      }
+
+     $items = \Cart::session(4)->getContent();
+     
+     return response()->json($items, 200);
+    }
+
+    public function deleteItem($id)
+    {
+      $product = Product::findOrFail($id);
+      \Cart::session(4)->remove($id);
 
      $items = \Cart::session(4)->getContent();
      

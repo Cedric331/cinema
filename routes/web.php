@@ -29,3 +29,4 @@ Route::get('/products', 'ProductsController@index')->name('products-index');
 Auth::routes();
 
 Route::post('/cart/add/{id}', 'CartController@store')->name('cart-add');
+Route::post('/cart/remove/{id}', 'CartController@remove')->name('cart-add');

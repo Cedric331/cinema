@@ -4842,7 +4842,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    add: function add(id) {
+      var _this = this;
+
+      axios.post('/cart/add/' + id).then(function (res) {
+        _this.count++;
+        _this.products = res.data;
+      })["catch"](function (error) {
+        if (error.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    },
+    remove: function remove(id) {
+      var _this2 = this;
+
+      axios.post('/cart/remove/' + id).then(function (res) {
+        _this2.count++;
+        _this2.products = res.data;
+      })["catch"](function (error) {
+        if (error.response.status == 401) {
+          window.location = '/login';
+        }
+      });
+    }
+  },
   data: function data() {
     return {
       products: this.array
@@ -43222,26 +43252,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-dark" }, [
-    _c("h3", { staticClass: "text-white" }, [_vm._v(_vm._s(_vm.$t("Panier")))]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "list-group" },
+  return _c(
+    "div",
+    { staticClass: "bg-dark" },
+    [
+      _c("h3", { staticClass: "text-white" }, [
+        _vm._v(_vm._s(_vm.$t("Panier")))
+      ]),
+      _vm._v(" "),
       _vm._l(_vm.products, function(product) {
-        return _c(
-          "button",
-          {
-            key: product.id,
-            staticClass: "list-group-item list-group-item-action",
-            attrs: { type: "button" }
-          },
-          [_vm._v(_vm._s(product.name))]
-        )
-      }),
-      0
-    )
-  ])
+        return _c("ul", { key: product.id, staticClass: "list-group my-2" }, [
+          _c("li", [
+            _c(
+              "button",
+              {
+                staticClass: "list-group-item list-group-item-action",
+                attrs: { type: "button" }
+              },
+              [
+                _vm._v(
+                  _vm._s(product.name) +
+                    " - quantité: " +
+                    _vm._s(product.quantity)
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: " btn btn-success",
+                on: {
+                  click: function($event) {
+                    return _vm.add(product.id)
+                  }
+                }
+              },
+              [_vm._v("+")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: " btn btn-danger",
+                on: {
+                  click: function($event) {
+                    return _vm.remove(product.id)
+                  }
+                }
+              },
+              [_vm._v("-")]
+            )
+          ])
+        ])
+      })
+    ],
+    2
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

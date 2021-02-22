@@ -9,12 +9,11 @@
 
                     <div class="view overlay rounded z-depth-2 mb-4">
                         <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
-                        <a>
-                            <div class="mask rgba-white-slight"></div>
-                        </a>
+                        <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
+                           <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients" :key="ingredient.name">
+                              {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
+                           </div>
                     </div>
-
-                    <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
                     <p class="dark-grey-text"></p>
                     <a @click="add(product.id)" class="btn btn-outline-success btn-rounded btn-md">{{ $t('Ajouter')}}</a>
                 </div>

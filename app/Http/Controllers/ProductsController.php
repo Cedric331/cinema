@@ -11,7 +11,8 @@ class ProductsController extends Controller
 {
     public function index()
     {
-       $products = Product::All();
+      $products = Product::with('ingredients')->get();
+
        $items = \Cart::session(7)->getContent();
        $total= \Cart::session(7)->getTotal();
        

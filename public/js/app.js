@@ -4959,7 +4959,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
@@ -43494,13 +43493,31 @@ var render = function() {
                         }
                       }),
                       _vm._v(" "),
-                      _vm._m(0, true)
-                    ]
+                      _c("h4", { staticClass: "font-weight-bold mb-3" }, [
+                        _c("strong", [_vm._v(_vm._s(product.name))])
+                      ]),
+                      _vm._v(" "),
+                      _vm._l(product.ingredients, function(ingredient, index) {
+                        return _c(
+                          "div",
+                          {
+                            key: ingredient.name,
+                            staticClass: "mask rgba-white-slight d-inline"
+                          },
+                          [
+                            _vm._v(
+                              "\n                          " +
+                                _vm._s(ingredient.name)
+                            ),
+                            index != product.ingredients.length - 1
+                              ? _c("em", [_vm._v(",")])
+                              : _vm._e()
+                          ]
+                        )
+                      })
+                    ],
+                    2
                   ),
-                  _vm._v(" "),
-                  _c("h4", { staticClass: "font-weight-bold mb-3" }, [
-                    _c("strong", [_vm._v(_vm._s(product.name))])
-                  ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "dark-grey-text" }),
                   _vm._v(" "),
@@ -43533,14 +43550,7 @@ var render = function() {
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", [_c("div", { staticClass: "mask rgba-white-slight" })])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

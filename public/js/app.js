@@ -4959,6 +4959,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
@@ -43479,11 +43480,14 @@ var render = function() {
             _vm._l(_vm.products, function(product) {
               return _c(
                 "div",
-                { key: product.id, staticClass: "col-lg-3 col-md-12 mb-4" },
+                {
+                  key: product.id,
+                  staticClass: "col-lg-4 col-sm-12 col-md-6 mb-4"
+                },
                 [
                   _c(
                     "div",
-                    { staticClass: "view overlay rounded z-depth-2 mb-4" },
+                    { staticClass: "view overlay rounded z-depth-2 mb-2" },
                     [
                       _c("img", {
                         staticClass: "img-fluid imageProduct",
@@ -43519,7 +43523,16 @@ var render = function() {
                     2
                   ),
                   _vm._v(" "),
-                  _c("p", { staticClass: "dark-grey-text" }),
+                  _c("strong", { staticClass: "mb-1" }, [
+                    _vm._v(
+                      _vm._s(_vm.$t("prix")) +
+                        " : " +
+                        _vm._s(product.price.toFixed(2)) +
+                        " €"
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("hr"),
                   _vm._v(" "),
                   _c(
                     "a",

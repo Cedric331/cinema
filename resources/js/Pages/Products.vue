@@ -5,16 +5,17 @@
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
 
             <div class="row">
-                <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-12 mb-4">
+                <div v-for="product in products" :key="product.id" class="col-lg-4 col-sm-12 col-md-6 mb-4">
 
-                    <div class="view overlay rounded z-depth-2 mb-4">
+                    <div class="view overlay rounded z-depth-2 mb-2">
                         <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
                         <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
                            <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients" :key="ingredient.name">
                               {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
                            </div>
                     </div>
-                    <p class="dark-grey-text"></p>
+                    <strong class="mb-1">{{$t('prix')}} : {{product.price.toFixed(2)}} €</strong>
+                    <hr>
                     <a @click="add(product.id)" class="btn btn-outline-success btn-rounded btn-md">{{ $t('Ajouter')}}</a>
                 </div>
                 

@@ -6,7 +6,7 @@
        <h5 v-if="total == '0,00'" class="mt-5 text-white text-center">{{$t('Panier vide')}}</h5>
         <ul class="list-group my-3 text-center">
            <li class="mb-2" v-for="product in products" :key="product.id">
-            <button type="button" class="m-auto list-group-item list-group-item-action col-10 position-relative">{{product.name}} - {{ $t("quantité") }}: {{product.quantity}}  - {{ $t("prix") }}:  {{product.price}}€
+            <button type="button" class="m-auto list-group-item list-group-item-action col-10 position-relative">{{product.name}} - {{ $t("quantité") }}: {{product.quantity}}  - {{ $t("prix") }}:  {{product.price.toFixed(2)}}€
                <button v-if="product.quantity > 1" @click="deleteItem(product.id)" class="position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1" style="font-size:10px;">X</button>
                <button v-if="product.quantity > 1" @click="remove(product.id)" class="btn btn-warning mt-2 btn-sm col-3">-</button>
                <button v-if="product.quantity == 1" @click="remove(product.id)" class="btn btn-danger mt-2 btn-sm col-3"><i class="fas fa-trash"></i></button>

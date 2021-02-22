@@ -43347,7 +43347,7 @@ var render = function() {
                   "  - " +
                   _vm._s(_vm.$t("prix")) +
                   ":  " +
-                  _vm._s(product.price) +
+                  _vm._s(product.price.toFixed(2)) +
                   "€\n           "
               ),
               product.quantity > 1

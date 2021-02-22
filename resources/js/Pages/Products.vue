@@ -22,7 +22,7 @@
             </div>
             
         </section>
-        <cart :array="array" :sumTotal="sumTotal" :key="count"></cart>
+        <cart class="d-none d-xxl-block" :array="array" :sumTotal="sumTotal" :key="count"></cart>
     </div>
 </template>
 <script>
@@ -50,7 +50,7 @@
                 product: '',
                 sumTotal: this.total,
                 array: this.items,
-                count:0
+                count:0,
             }
         },
         props: ['listProducts', 'items', 'total'],

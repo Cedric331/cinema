@@ -4853,6 +4853,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     add: function add(id) {
@@ -43296,7 +43300,30 @@ var render = function() {
       _vm._v(_vm._s(_vm.$t("Panier")))
     ]),
     _vm._v(" "),
+    _c("h5", { staticClass: "text-center" }, [
+      _vm.total != "0,00"
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-secondary",
+              on: {
+                click: function($event) {
+                  return _vm.deleteCart()
+                }
+              }
+            },
+            [_vm._v(_vm._s(_vm.$t("Vider le Panier")))]
+          )
+        : _vm._e()
+    ]),
+    _vm._v(" "),
     _c("hr", { staticClass: "text-white my-1" }),
+    _vm._v(" "),
+    _vm.total == "0,00"
+      ? _c("h5", { staticClass: "mt-5 text-white text-center" }, [
+          _vm._v(_vm._s(_vm.$t("Panier vide")))
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "ul",
@@ -43328,7 +43355,7 @@ var render = function() {
                     "button",
                     {
                       staticClass:
-                        "position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
+                        "position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
                       staticStyle: { "font-size": "10px" },
                       on: {
                         click: function($event) {
@@ -43344,7 +43371,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-warning col-3",
+                      staticClass: "btn btn-warning mt-2 btn-sm col-3",
                       on: {
                         click: function($event) {
                           return _vm.remove(product.id)
@@ -43359,7 +43386,7 @@ var render = function() {
                 ? _c(
                     "button",
                     {
-                      staticClass: "btn btn-danger col-3",
+                      staticClass: "btn btn-danger mt-2 btn-sm col-3",
                       on: {
                         click: function($event) {
                           return _vm.remove(product.id)
@@ -43373,7 +43400,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-success col-3",
+                  staticClass: "btn btn-success mt-2 btn-sm col-3",
                   on: {
                     click: function($event) {
                       return _vm.add(product.id)
@@ -43389,29 +43416,12 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _c("h5", { staticClass: "text-center" }, [
-      _vm.total != "0,00"
-        ? _c(
-            "button",
-            {
-              staticClass: "btn btn-light",
-              on: {
-                click: function($event) {
-                  return _vm.deleteCart()
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.$t("Vider le Panier")))]
-          )
-        : _vm._e()
-    ]),
-    _vm._v(" "),
     _vm.total != "0,00"
       ? _c("hr", { staticClass: "text-white my-1" })
       : _vm._e(),
     _vm._v(" "),
     _vm.total != "0,00"
-      ? _c("h4", { staticClass: "text-white" }, [
+      ? _c("h5", { staticClass: "text-white my-2" }, [
           _vm._v(
             _vm._s(_vm.$t("Total de la commande")) +
               ": " +
@@ -43419,7 +43429,15 @@ var render = function() {
               "€"
           )
         ])
-      : _vm._e()
+      : _vm._e(),
+    _vm._v(" "),
+    _c("div", { staticClass: "text-center" }, [
+      _vm.total != "0,00"
+        ? _c("button", { staticClass: "btn btn-light mt-2" }, [
+            _vm._v(_vm._s(_vm.$t("Commander")))
+          ])
+        : _vm._e()
+    ])
   ])
 }
 var staticRenderFns = []
@@ -43508,6 +43526,7 @@ var render = function() {
       _vm._v(" "),
       _c("cart", {
         key: _vm.count,
+        staticClass: "d-none d-xxl-block",
         attrs: { array: _vm.array, sumTotal: _vm.sumTotal }
       })
     ],
@@ -55901,7 +55920,9 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
       "Vider le Panier": "Clear the Cart",
       "quantité": "quantity",
       "prix": "price",
-      "Total de la commande": "Total order"
+      "Total de la commande": "Total order",
+      "Commander": "Order",
+      "Panier vide": "Empty cart"
     },
     fr: {
       "Panier": "Panier",
@@ -55910,7 +55931,9 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
       "Vider le Panier": "Vider le Panier",
       "quantité": "quantité",
       "prix": "prix",
-      "Total de la commande": "Total de la commande"
+      "Total de la commande": "Total de la commande",
+      "Commander": "Commander",
+      "Panier vide": "Panier vide"
     }
   }
 });

@@ -21,6 +21,8 @@ export const i18n = new VueI18n({
         "quantité": "quantity",
         "prix": "price",
         "Total de la commande": "Total order",
+        "Commander": "Order",
+        "Panier vide": "Empty cart",
       },
       fr: {
          "Panier": "Panier",
@@ -30,6 +32,8 @@ export const i18n = new VueI18n({
          "quantité": "quantité",
          "prix": "prix",
          "Total de la commande": "Total de la commande",
+         "Commander": "Commander",
+         "Panier vide": "Panier vide",
        },
   }
  });

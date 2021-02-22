@@ -54,7 +54,7 @@
                         <div class="row">
                            <div class="col">
                               <label for="number" class="col-form-label text-md-right">{{ __('Street number') }}</label>
-                              <input id="number" type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" required autocomplete="number">
+                              <input id="number" type="number" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}" required autocomplete="number">
 
                               @error('number')
                                   <span class="invalid-feedback" role="alert">
@@ -79,7 +79,7 @@
 
                            <div class="col-8">
                               <label for="complement_adress" class="col-form-label text-md-right">{{ __('Additional address') }}</label>
-                              <input id="complement_adress" type="complement_adress" class="form-control @error('complement_adress') is-invalid @enderror" name="complement_adress" value="{{ old('complement_adress') }}" required autocomplete="complement_adress">
+                              <input id="complement_adress" type="complement_adress" class="form-control @error('complement_adress') is-invalid @enderror" name="complement_adress" value="{{ old('complement_adress') }}" autocomplete="complement_adress">
 
                               @error('complement_adress')
                                   <span class="invalid-feedback" role="alert">

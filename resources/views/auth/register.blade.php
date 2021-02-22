@@ -22,7 +22,7 @@
                                   </span>
                               @enderror
                            </div>
-                           <div class="col">
+                           <div class="col-md-6 col-sm-12">
                               <label for="email" class="col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
                               <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
@@ -35,7 +35,7 @@
                          </div>
 
                         <div class="form-group row">
-                           <div class="col-8">
+                           <div class="col-md-8 col-sm-12">
                               <label for="phone" class="col-form-label text-md-right">{{ __('Phone') }}</label>
                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
@@ -49,7 +49,7 @@
 
                        <hr class="my-4">
 
-                       <h5 class="my-2">{{ __('Adresse') }} : </h4>
+                       <h5 class="my-2">{{ __('Adresse') }} : </h5>
 
                         <div class="row">
                            <div class="col">
@@ -63,7 +63,7 @@
                               @enderror
                            </div>
 
-                           <div class="col">
+                           <div class="col-md-6 col-sm-12">
                               <label for="adress" class="col-form-label text-md-right">{{ __('Address') }}</label>
                               <input id="adress" type="adress" class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" required autocomplete="adress">
 
@@ -77,8 +77,8 @@
 
                          <div class="row">
 
-                           <div class="col-8">
-                              <label for="complement_adress" class="col-form-label text-md-right">{{ __('Additional address') }}</label>
+                           <div class="col-md-8 col-sm-12">
+                              <label for="complement_adress" class="col-form-label text-md-right"><em class="text-danger">*</em>{{ __('Additional address') }}</label>
                               <input id="complement_adress" type="complement_adress" class="form-control @error('complement_adress') is-invalid @enderror" name="complement_adress" value="{{ old('complement_adress') }}" autocomplete="complement_adress">
 
                               @error('complement_adress')
@@ -142,7 +142,9 @@
                                 </button>
                             </div>
                         </div>
+                        
                     </form>
+                    <em class="text-danger mt-2">*{{ __('Facultatif') }}</em>
                 </div>
             </div>
         </div>

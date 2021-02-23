@@ -9,6 +9,11 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class StripeController extends Controller
 {
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
+   
    public function index()
    {
       $YOUR_DOMAIN = 'http://localhost:8000';

@@ -6,6 +6,7 @@ use App\Product;
 use Inertia\Inertia;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -13,13 +14,19 @@ class ProductsController extends Controller
     {
       $products = Product::with('ingredients')->get();
 
-       $items = \Cart::session(7)->getContent();
-       $total= \Cart::session(7)->getTotal();
-       
+      if (Auth::check()) {
+         $items = \Cart::session(Auth::user()->id)->getContent();
+         $total= \Cart::session(Auth::user()->id)->getTotal();
+      } else{
+         $items = [];
+         $total = 0;
+      }
+
        return Inertia::render('Products',[
           'listProducts' => $products,
           'items' => $items,
-          'total' => $total
+          'total' => $total,
+          'auth' => Auth::check(),
        ]);
     }
 }

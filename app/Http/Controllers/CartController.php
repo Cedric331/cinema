@@ -6,19 +6,20 @@ use App\Product;
 
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-   // public function __construct()
-   // {
-   //     $this->middleware('auth');
-   // }
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
 
     public function store($id)
     {
       $product = Product::find($id);
 
-      $add = \Cart::session(7)->add([
+      $add = \Cart::session(Auth::user()->id)->add([
          'id' => $product->id,
          'name' => $product->name,
          'price' => $product->price,
@@ -26,8 +27,8 @@ class CartController extends Controller
          'quantity' => 1
      ]);
 
-     $total = \Cart::session(7)->getTotal();
-     $items = \Cart::session(7)->getContent();
+     $total = \Cart::session(Auth::user()->id)->getTotal();
+     $items = \Cart::session(Auth::user()->id)->getContent();
      $array = [$items, $total];
 
      return response()->json($array, 200);
@@ -36,21 +37,21 @@ class CartController extends Controller
     public function removeItem($id)
     {
       $product = Product::findOrFail($id);
-      $item = \Cart::session(7)->get($product->id);
+      $item = \Cart::session(Auth::user()->id)->get($product->id);
  
       if ($item->quantity == 1) 
       {
-         \Cart::session(7)->remove($id);
+         \Cart::session(Auth::user()->id)->remove($id);
       }
       else 
       {
-         \Cart::session(7)->update($product->id, array(
+         \Cart::session(Auth::user()->id)->update($product->id, array(
             'quantity' => -1, 
           ));
       }
 
-      $total = \Cart::session(7)->getTotal();
-      $items = \Cart::session(7)->getContent();
+      $total = \Cart::session(Auth::user()->id)->getTotal();
+      $items = \Cart::session(Auth::user()->id)->getContent();
       $array = [$items, $total];
      
      return response()->json($array, 200);
@@ -60,10 +61,10 @@ class CartController extends Controller
     public function deleteItem($id)
     {
       $product = Product::findOrFail($id);
-      \Cart::session(7)->remove($product->id);
+      \Cart::session(Auth::user()->id)->remove($product->id);
 
-      $total = \Cart::session(7)->getTotal();
-      $items = \Cart::session(7)->getContent();
+      $total = \Cart::session(Auth::user()->id)->getTotal();
+      $items = \Cart::session(Auth::user()->id)->getContent();
       $array = [$items, $total];
      
      return response()->json($array, 200);
@@ -71,9 +72,9 @@ class CartController extends Controller
 
     public function deleteCart()
     {
-      \Cart::session(7)->clear();
-      $total = \Cart::session(7)->getTotal();
-      $items = \Cart::session(7)->getContent();
+      \Cart::session(Auth::user()->id)->clear();
+      $total = \Cart::session(Auth::user()->id)->getTotal();
+      $items = \Cart::session(Auth::user()->id)->getContent();
       $array = [$items, $total];
       
      return response()->json($array, 200);
@@ -81,8 +82,8 @@ class CartController extends Controller
 
     public function index()
     {
-      $total = \Cart::session(7)->getTotal();
-      $items = \Cart::session(7)->getContent();
+      $total = \Cart::session(Auth::user()->id)->getTotal();
+      $items = \Cart::session(Auth::user()->id)->getContent();
  
       return Inertia::render('MyCart',[
          'items' => $items,

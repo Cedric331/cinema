@@ -22,7 +22,7 @@
             </div>
             
         </section>
-        <cart class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal" :key="count"></cart>
+        <cart v-if="auth" class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal" :key="count"></cart>
     </div>
 </template>
 <script>
@@ -53,7 +53,7 @@
                 count:0,
             }
         },
-        props: ['listProducts', 'items', 'total'],
+        props: ['listProducts', 'items', 'total', 'auth'],
         components: {
             Cart,
         },

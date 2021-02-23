@@ -20,5 +20,10 @@
    "Modifier ma commande": "Modify my order",
    "unité": "unit",
    "Payer": "Pay",
-   "Total de la commande": "Total order"
+   "Total de la commande": "Total order",
+   "Mon Panier": "My Cart",
+   "Mon Compte": "My Account",
+   "Mes Informations": "My Information",
+   "Supprimer mon compte": "Delete my account",
+   "Mes Commandes": "My Orders"
 }

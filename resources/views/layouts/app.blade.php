@@ -114,8 +114,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                 <a href="{{ route('account-index') }}" class="dropdown-item">
+                                    {{ __('Mon Compte') }}
+                                 </a>
                                  <a href="{{ route('cart-index') }}" class="dropdown-item">
-                                    Mon Panier
+                                    {{ __('Mon Panier') }}
                                  </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

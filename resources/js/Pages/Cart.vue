@@ -17,7 +17,7 @@
         <hr v-if="total != '0,00'" class="text-white my-1">
         <h5 v-if="total != '0,00'" class="text-white my-2">{{ $t("Total de la commande") }}: {{total}}€</h5>
         <div class="text-center">
-         <button v-if="total != '0,00'" class="btn btn-light mt-2">{{$t('Commander')}}</button>
+         <a v-if="total != '0,00'" class="btn btn-light mt-2" href="/order">{{$t('Commander')}}</a>
         </div>
     </div>
 </template>

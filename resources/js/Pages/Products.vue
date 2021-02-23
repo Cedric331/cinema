@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid d-flex justify-content-around">
+    <div class="container-fluid d-flex justify-content-around bg-light">
 
         <section class="dark-grey-text text-center col-sm-12 col-md-9">
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>

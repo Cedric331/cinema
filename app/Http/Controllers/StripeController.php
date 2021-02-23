@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Stripe\Stripe;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class StripeController extends Controller
@@ -13,12 +14,12 @@ class StripeController extends Controller
    {
        $this->middleware('auth');
    }
-   
+
    public function index()
    {
       $YOUR_DOMAIN = 'http://localhost:8000';
 
-      $items = \Cart::session(7)->getContent();
+      $items = \Cart::session(Auth::user()->id)->getContent();
       $products = [];
       foreach ($items as $item) {
 

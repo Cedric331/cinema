@@ -13,5 +13,12 @@
    "Notre Sélection du Mois": "Our Selection of the Month",
    "Panier": "Cart",
    "Adresse": "Address",
-   "Facultatif": "Optional"
+   "Facultatif": "Optional",
+   "Récapitulatif de la commande": "Order Summary",
+   "Quantité": "Quantity",
+   "Prix": "Price",
+   "Modifier ma commande": "Modify my order",
+   "unité": "unit",
+   "Payer": "Pay",
+   "Total de la commande": "Total order"
 }

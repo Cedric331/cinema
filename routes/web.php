@@ -22,14 +22,14 @@ Route::get('locale', 'LocalizationController@getLang')->name('getlang');
 Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
 
 Route::get('/', function () {
-   $products = Product::with('ingredients')->get();
-   // dd($products);
     return view('home');
-});
+})->name('home');
 
 Route::get('/products', 'ProductsController@index')->name('products-index');
 
 Auth::routes();
+
+Route::get('/paiement', 'StripeController@index');
 
 Route::get('/cart/index', 'CartController@index')->name('cart-index');
 

@@ -51,8 +51,8 @@ body{
 
 .btn-white:hover{
    transition: all 1s;
+   color: white;
    background-color:rgb(54, 55, 56);
-   color:white;
    transform: scale(1.1);
 }
 

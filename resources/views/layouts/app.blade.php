@@ -52,8 +52,8 @@
                                  {{ __('Nos Pizzas') }}
                               </a>
                            </li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li>
+                          {{-- <li><hr class="dropdown-divider"></li> --}}
+                          {{-- <li>
                               <a class="dropdown-item" href="#">
                                  {{ __('Nos Burgers') }}
                               </a>
@@ -69,7 +69,7 @@
                               <a class="dropdown-item" href="#">
                                  {{ __('Nos Boissons') }}
                               </a>
-                           </li>
+                           </li> --}}
                         </ul>
                       </li>
                         <li class="nav-item">

@@ -6,9 +6,9 @@
    <img id="imageHome" src="{{ asset('/image/pizza-home.jpg') }}" class="card-img" alt="Image d'accueil">
    <div class="card-img-overlay text-center mt-5">
      <strong class="card-title">
-      <button class="btn btn-white">
+      <a class="btn btn-white"  href="{{ route('products-index') }}">
          <h2>{{ __('Commander en ligne') }}</h2>
-      </button>
+      </a>
    </strong>
    </div>
  </div>

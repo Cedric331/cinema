@@ -4856,7 +4856,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     add: function add(id) {
@@ -43361,91 +43360,101 @@ var render = function() {
     _vm._v(" "),
     _c(
       "ul",
-      { staticClass: "list-group my-3 text-center" },
+      {
+        staticClass: "list-group my-3 text-center d-flex justify-content-center"
+      },
       _vm._l(_vm.products, function(product) {
-        return _c("li", { key: product.id, staticClass: "mb-2" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "m-auto list-group-item list-group-item-action col-10 position-relative",
-              attrs: { type: "button" }
-            },
-            [
-              _vm._v(
-                _vm._s(product.name) +
-                  " - " +
-                  _vm._s(_vm.$t("quantité")) +
-                  ": " +
-                  _vm._s(product.quantity) +
-                  "  - " +
-                  _vm._s(_vm.$t("prix")) +
-                  ":  " +
-                  _vm._s(product.price.toFixed(2)) +
-                  "€\n           "
-              ),
-              product.quantity > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass:
-                        "position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
-                      staticStyle: { "font-size": "10px" },
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteItem(product.id)
-                        }
+        return _c(
+          "li",
+          {
+            key: product.id,
+            staticClass: "mb-2 bg-light p-2 position-relative"
+          },
+          [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "m-auto list-group-item list-group-item-action col-12",
+                attrs: { type: "button" }
+              },
+              [
+                _vm._v(
+                  _vm._s(product.name) +
+                    " - " +
+                    _vm._s(_vm.$t("quantité")) +
+                    ": " +
+                    _vm._s(product.quantity) +
+                    "  - " +
+                    _vm._s(_vm.$t("prix")) +
+                    ":  " +
+                    _vm._s(product.price.toFixed(2)) +
+                    "€"
+                )
+              ]
+            ),
+            _vm._v(" "),
+            product.quantity > 1
+              ? _c(
+                  "button",
+                  {
+                    staticClass:
+                      "position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
+                    staticStyle: { "font-size": "10px" },
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteItem(product.id)
                       }
-                    },
-                    [_vm._v("X")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              product.quantity > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning mt-2 btn-sm col-3",
-                      on: {
-                        click: function($event) {
-                          return _vm.remove(product.id)
-                        }
-                      }
-                    },
-                    [_vm._v("-")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              product.quantity == 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger mt-2 btn-sm col-3",
-                      on: {
-                        click: function($event) {
-                          return _vm.remove(product.id)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fas fa-trash" })]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success mt-2 btn-sm col-3",
-                  on: {
-                    click: function($event) {
-                      return _vm.add(product.id)
                     }
+                  },
+                  [_vm._v("X")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            product.quantity > 1
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-warning mt-2 btn-sm col-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.remove(product.id)
+                      }
+                    }
+                  },
+                  [_vm._v("-")]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            product.quantity == 1
+              ? _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-danger mt-2 btn-sm col-2",
+                    on: {
+                      click: function($event) {
+                        return _vm.remove(product.id)
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-trash" })]
+                )
+              : _vm._e(),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success mt-2 btn-sm col-2",
+                on: {
+                  click: function($event) {
+                    return _vm.add(product.id)
                   }
-                },
-                [_vm._v("+")]
-              )
-            ]
-          )
-        ])
+                }
+              },
+              [_vm._v("+")]
+            )
+          ]
+        )
       }),
       0
     ),

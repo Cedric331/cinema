@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route qui permet de connaître la langue active
-Route::get('locale', 'LocalizationController@getLang')->name('getlang');
+// Route::get('locale', 'LocalizationController@getLang')->name('getlang');
 
 // Route qui permet de modifier la langue
 Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
@@ -29,12 +29,13 @@ Route::get('/products', 'ProductsController@index')->name('products-index');
 
 Auth::routes();
 
-Route::post('/create-checkout-session', 'StripeController@index');
-Route::get('/order', 'OrderController@index')->name('order');
-
-Route::get('/cart/index', 'CartController@index')->name('cart-index');
-
-Route::post('/cart/add/{id}', 'CartController@store')->name('cart-add');
-Route::post('/cart/remove/{id}', 'CartController@removeItem')->name('cart-remove');
-Route::post('/cart/deleteItem/{id}', 'CartController@deleteItem')->name('cart-deleteItem');
-Route::post('/cart/deleteCart', 'CartController@deleteCart')->name('cart-deleteCart');
+Route::middleware('auth')->group(function () {
+   Route::get('/account', 'AccountController@index')->name('account-index');
+   Route::post('/create-checkout-session', 'StripeController@index');
+   Route::get('/order', 'OrderController@index')->name('order');
+   Route::get('/cart/index', 'CartController@index')->name('cart-index');
+   Route::post('/cart/add/{id}', 'CartController@store')->name('cart-add');
+   Route::post('/cart/remove/{id}', 'CartController@removeItem')->name('cart-remove');
+   Route::post('/cart/deleteItem/{id}', 'CartController@deleteItem')->name('cart-deleteItem');
+   Route::post('/cart/deleteCart', 'CartController@deleteCart')->name('cart-deleteCart');
+   });

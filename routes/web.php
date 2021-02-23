@@ -29,7 +29,8 @@ Route::get('/products', 'ProductsController@index')->name('products-index');
 
 Auth::routes();
 
-Route::get('/paiement', 'StripeController@index');
+Route::post('/create-checkout-session', 'StripeController@index');
+Route::get('/order', 'OrderController@index')->name('order');
 
 Route::get('/cart/index', 'CartController@index')->name('cart-index');
 

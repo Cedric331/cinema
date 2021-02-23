@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Stripe\Stripe;
 use Illuminate\Http\Request;
 use Stripe\Checkout\Session;
-use Symfony\Component\HttpFoundation\JsonResponse;
 
-class StripeController extends Controller
+class OrderController extends Controller
 {
    public function index()
    {
+      $total = \Cart::session(7)->getTotal();
+      $items = \Cart::session(7)->getContent();
+
       $YOUR_DOMAIN = 'http://localhost:8000';
 
-      $items = \Cart::session(7)->getContent();
       $products = [];
       foreach ($items as $item) {
 
@@ -40,7 +41,9 @@ class StripeController extends Controller
         'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
       ]);
 
-      $response = new JsonResponse(['id' => $checkout_session->id]);
-      return $response;
+      return view('checkout.cart',[
+         'total' => $total,
+         'products' => $items
+      ]);
    }
 }

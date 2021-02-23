@@ -22,7 +22,7 @@
             </div>
             
         </section>
-        <cart class="d-none d-xxl-block" :array="array" :sumTotal="sumTotal" :key="count"></cart>
+        <cart class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal" :key="count"></cart>
     </div>
 </template>
 <script>

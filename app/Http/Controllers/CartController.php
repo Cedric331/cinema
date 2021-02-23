@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -75,5 +76,16 @@ class CartController extends Controller
       $array = [$items, $total];
       
      return response()->json($array, 200);
+    }
+
+    public function index()
+    {
+      $total = \Cart::session(7)->getTotal();
+      $items = \Cart::session(7)->getContent();
+ 
+      return Inertia::render('MyCart',[
+         'items' => $items,
+         'total' => $total
+      ]);
     }
 }

@@ -31,6 +31,8 @@ Route::get('/products', 'ProductsController@index')->name('products-index');
 
 Auth::routes();
 
+Route::get('/cart/index', 'CartController@index')->name('cart-index');
+
 Route::post('/cart/add/{id}', 'CartController@store')->name('cart-add');
 Route::post('/cart/remove/{id}', 'CartController@removeItem')->name('cart-remove');
 Route::post('/cart/deleteItem/{id}', 'CartController@deleteItem')->name('cart-deleteItem');

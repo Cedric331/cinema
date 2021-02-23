@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-dark col-sm-12 col-md-3">
+    <div>
        <h3 class="text-white text-center">{{ $t("Panier") }}</h3>
        <h5 class="text-center"><button v-if="total != '0,00'" @click="deleteCart()" class="btn btn-secondary">{{ $t('Vider le Panier')}}</button></h5>
        <hr class="text-white my-1">

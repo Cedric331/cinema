@@ -30,7 +30,11 @@ Route::get('/products', 'ProductsController@index')->name('products-index');
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+
    Route::get('/account', 'AccountController@index')->name('account-index');
+   Route::get('/account/information', 'AccountController@information')->name('account-information');
+
+
    Route::post('/create-checkout-session', 'StripeController@index');
    Route::get('/order', 'OrderController@index')->name('order');
    Route::get('/cart/index', 'CartController@index')->name('cart-index');

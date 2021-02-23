@@ -18,7 +18,7 @@
        </div>
        <div class="col-md-4 mb-4">
 
-         <a href="#!" class="card hoverable">
+         <a href="{{ route('account-information') }}" class="card hoverable">
            <div class="card-body my-4">
 
               <p><i class="fas fa-cogs fa-2x text-muted"></i></p>

@@ -4907,6 +4907,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         window.location = '/';
       })["catch"](function (err) {
+        console.log(err);
+
         if (document.documentElement.lang == 'fr') {
           _this.$notify({
             group: 'success',

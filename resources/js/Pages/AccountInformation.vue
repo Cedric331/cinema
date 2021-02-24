@@ -72,6 +72,7 @@ export default {
          }).then(res => {
           window.location = '/'
         }).catch(err => {
+           console.log(err)
            if (document.documentElement.lang == 'fr') {
             this.$notify({
                group: 'success',

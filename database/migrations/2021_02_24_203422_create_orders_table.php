@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->json('products');
             $table->float('total');
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
             $table->timestamps();
         });
     }

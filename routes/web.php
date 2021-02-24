@@ -36,6 +36,9 @@ Route::middleware('auth')->group(function () {
    Route::get('/account/information', 'AccountController@information')->name('account-information');
    Route::post('/account/information', 'AccountController@update')->name('account-update');
 
+   Route::get('/cancel', 'OrderController@cancel')->name('cancel');
+   Route::get('/success', 'OrderController@success')->name('success');
+
 
    Route::post('/create-checkout-session', 'StripeController@index');
    Route::get('/order', 'OrderController@index')->name('order');

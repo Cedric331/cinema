@@ -42,8 +42,8 @@ class StripeController extends Controller
         'payment_method_types' => ['card'],
         'line_items' => [$products],
         'mode' => 'payment',
-        'success_url' => $YOUR_DOMAIN . '/success.html',
-        'cancel_url' => $YOUR_DOMAIN . '/cancel.html',
+        'success_url' => $YOUR_DOMAIN . '/success',
+        'cancel_url' => $YOUR_DOMAIN . '/cancel',
       ]);
 
       $response = new JsonResponse(['id' => $checkout_session->id]);

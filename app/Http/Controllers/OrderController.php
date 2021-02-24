@@ -28,4 +28,28 @@ class OrderController extends Controller
          'products' => $items
       ]);
    }
+
+   public function cancel()
+   {
+      $items = \Cart::session(Auth::user()->id)->getContent();
+
+      if (count($items) == 0) {
+        return redirect()->route('cart-index');
+      }
+
+      return view('checkout.cancel');
+   }
+
+   public function success()
+   {
+      $items = \Cart::session(Auth::user()->id)->getContent();
+
+      if (count($items) == 0) {
+        return redirect()->route('cart-index');
+      }
+
+      \Cart::session(Auth::user()->id)->clear();
+
+      return view('checkout.success');
+   }
 }

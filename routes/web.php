@@ -21,9 +21,7 @@ Route::get('/locale', 'LocalizationController@getLang')->name('getlang');
 // Route qui permet de modifier la langue
 Route::get('/locale/{lang}', 'LocalizationController@setLang')->name('setlang');
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/products', 'ProductsController@index')->name('products-index');
 

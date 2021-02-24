@@ -16,13 +16,12 @@
  <div class="container-fluid bg-light p-3">
    <section class="dark-grey-text">
      <h2 class="text-center font-weight-bold mb-4 pb-2">{{ __('Notre Sélection du Mois') }}</h2>
-     <p class="text-center mx-auto w-responsive mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur veniam.</p>
-
+      <hr>
      <div class="row align-items-center">
- 
+      @foreach ($products as $product)
        <div class="col-lg-5 mt-3">
          <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4">
-           <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg" alt="Sample image">
+           <img class="img-fluid" style="width: 400px;height: 400px;" src="{{ asset('/image/products/'.$product->image) }}" alt="Image {{ $product->name }}">
            <a>
              <div class="mask rgba-white-slight"></div>
            </a>
@@ -30,12 +29,11 @@
        </div>
 
        <div class="col-lg-7">
-         <h4 class="font-weight-bold mb-3"><strong>Title of the news</strong></h4>
-         <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime
-           placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus et aut officiis debitis.</p>
-         <a class="btn btn-success btn-md btn-rounded mx-0">Read more</a>
+         <h4 class="font-weight-bold mb-3"><strong>{{ $product->name }}</strong></h4>
+         <p>{{ $product->description }}</p>
+         <a href="{{ route('products-index') }}" class="btn btn-success btn-md btn-rounded mx-0">{{ __('Voir les produits') }}</a>
        </div>
-
+       @endforeach
      </div>
    </section>
  </div>

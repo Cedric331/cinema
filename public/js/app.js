@@ -4899,41 +4899,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     deleteUser: function deleteUser() {
+      var _this = this;
+
       axios({
         method: 'get',
         url: '/account/delete'
       }).then(function (res) {
         window.location = '/';
-      })["catch"](function (err) {});
-    },
-    update: function update() {
-      var _this = this;
-
-      axios({
-        method: 'post',
-        url: '/account/information',
-        data: this.form
-      }).then(function (res) {
-        _this.errors = '';
-
-        if (document.documentElement.lang == 'fr') {
-          _this.$notify({
-            group: 'success',
-            type: 'success',
-            title: 'Modification du compte',
-            text: 'Vos informations sont à jour!'
-          });
-        } else {
-          _this.$notify({
-            group: 'success',
-            type: 'success',
-            title: 'Update Account',
-            text: 'Your information is up to date!'
-          });
-        }
       })["catch"](function (err) {
-        _this.errors = err.response.data.errors;
-
         if (document.documentElement.lang == 'fr') {
           _this.$notify({
             group: 'success',
@@ -4943,6 +4916,51 @@ __webpack_require__.r(__webpack_exports__);
           });
         } else {
           _this.$notify({
+            group: 'success',
+            type: 'warn',
+            title: 'Errors',
+            text: 'Oops there is an error!'
+          });
+        }
+      });
+    },
+    update: function update() {
+      var _this2 = this;
+
+      axios({
+        method: 'post',
+        url: '/account/information',
+        data: this.form
+      }).then(function (res) {
+        _this2.errors = '';
+
+        if (document.documentElement.lang == 'fr') {
+          _this2.$notify({
+            group: 'success',
+            type: 'success',
+            title: 'Modification du compte',
+            text: 'Vos informations sont à jour!'
+          });
+        } else {
+          _this2.$notify({
+            group: 'success',
+            type: 'success',
+            title: 'Update Account',
+            text: 'Your information is up to date!'
+          });
+        }
+      })["catch"](function (err) {
+        _this2.errors = err.response.data.errors;
+
+        if (document.documentElement.lang == 'fr') {
+          _this2.$notify({
+            group: 'success',
+            type: 'warn',
+            title: 'Erreurs',
+            text: 'Oups il y a une erreur!'
+          });
+        } else {
+          _this2.$notify({
             group: 'success',
             type: 'warn',
             title: 'Errors',

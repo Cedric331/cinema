@@ -71,7 +71,23 @@ export default {
          url: '/account/delete'
          }).then(res => {
           window.location = '/'
-        }).catch(err => {})
+        }).catch(err => {
+           if (document.documentElement.lang == 'fr') {
+            this.$notify({
+               group: 'success',
+               type: 'warn',
+               title: 'Erreurs',
+               text: 'Oups il y a une erreur!'
+               });
+            } else {
+            this.$notify({
+               group: 'success',
+               type: 'warn',
+               title: 'Errors',
+               text: 'Oops there is an error!'
+               });
+            }
+        })
      },
      update(){
         axios({

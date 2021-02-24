@@ -35,6 +35,7 @@ Route::middleware('auth')->group(function () {
    Route::get('/account/delete', 'AccountController@delete')->name('account-delete');
    Route::get('/account/information', 'AccountController@information')->name('account-information');
    Route::post('/account/information', 'AccountController@update')->name('account-update');
+   Route::get('/account/order', 'AccountController@order')->name('account-order');
 
    Route::get('/cancel', 'OrderController@cancel')->name('cancel');
    Route::get('/success', 'OrderController@success')->name('success');

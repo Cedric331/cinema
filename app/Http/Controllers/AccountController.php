@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Order;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
@@ -60,4 +61,20 @@ class AccountController extends Controller
       $user->delete();
       return response()->json(null, 200);
    }
+
+   public function order()
+   {
+      $orders = Order::where('user_id', Auth::user()->id)
+      ->orderBy('created_at', 'DESC')
+      ->get();
+
+      foreach ($orders as $order) {
+         $order->products = json_decode($order->products);
+      }
+
+      return view('auth.order',[
+         'orders' => $orders
+      ]);
+   }
 }
+

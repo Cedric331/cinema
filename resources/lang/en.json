@@ -16,6 +16,7 @@
    "Facultatif": "Optional",
    "Récapitulatif de la commande": "Order Summary",
    "Quantité": "Quantity",
+   "quantité": "quantity",
    "Prix": "Price",
    "Modifier ma commande": "Modify my order",
    "unité": "unit",
@@ -27,5 +28,9 @@
    "Supprimer mon compte": "Delete my account",
    "Mes Commandes": "My Orders",
    "Paiement annulé": "Payment cancelled",
-   "Merci pour votre achat": "Thank you for your purchase"
+   "Merci pour votre achat": "Thank you for your purchase",
+   "Date de la commande": "Date of the order",
+   "Référence": "Reference",
+   "Produits": "Products",
+   "Mes commandes": "My orders"
 }

@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
+   public function __construct()
+   {
+       $this->middleware('auth');
+   }
+
    public function index()
    {
       return view('auth.account');
@@ -20,5 +25,20 @@ class AccountController extends Controller
       return Inertia::render('AccountInformation',[
          'user' => $user
       ]);
+   }
+
+   public function update(Request $request)
+   {
+      $user = User::find(Auth::user()->id);
+
+      if (!$user) {
+         return response()->json(null, 400);
+      }
+      
+      $user->name = $request->name;
+      $user->email = $request->email;
+      $user->save();
+
+      return response()->json(null, 200);
    }
 }

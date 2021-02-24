@@ -4842,7 +4842,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  methods: {
+    update: function update() {
+      axios({
+        method: 'post',
+        url: '/account/information',
+        data: this.form
+      }).then(function (res) {})["catch"](function (err) {});
+    }
+  },
   props: ['user'],
   data: function data() {
     return {
@@ -43361,52 +43392,99 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "bg-light" }, [
-    _c("label", { attrs: { for: "first_name" } }, [_vm._v("Name:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
+  return _c("div", { staticClass: "container z-depth-1 bg-light my-5 p-5" }, [
+    _c("section", [
+      _c(
+        "h3",
         {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.form.name,
-          expression: "form.name"
-        }
-      ],
-      attrs: { id: "first_name" },
-      domProps: { value: _vm.form.name },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.form, "name", $event.target.value)
-        }
-      }
-    }),
-    _vm._v(" "),
-    _c("label", { attrs: { for: "email" } }, [_vm._v("Email:")]),
-    _vm._v(" "),
-    _c("input", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
-          value: _vm.form.email,
-          expression: "form.email"
-        }
-      ],
-      attrs: { id: "email" },
-      domProps: { value: _vm.form.email },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.$set(_vm.form, "email", $event.target.value)
-        }
-      }
-    })
+          staticClass: "font-weight-normal text-center dark-grey-text my-4 pb-2"
+        },
+        [_vm._v(_vm._s(_vm.$t("Modification du compte")))]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row d-flex justify-content-center" }, [
+        _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+          _c("div", { staticClass: "md-form md-outline form-lg" }, [
+            _c("label", { attrs: { for: "form1" } }, [
+              _vm._v(_vm._s(_vm.$t("Nom")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.name,
+                  expression: "form.name"
+                }
+              ],
+              staticClass: "form-control form-control-lg",
+              attrs: { type: "text", id: "first_name" },
+              domProps: { value: _vm.form.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "name", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+          _c("div", { staticClass: "md-form md-outline form-lg" }, [
+            _c("label", { attrs: { for: "form2" } }, [
+              _vm._v(_vm._s(_vm.$t("Email")))
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.email,
+                  expression: "form.email"
+                }
+              ],
+              staticClass: "form-control form-control-lg",
+              attrs: { type: "text", id: "email" },
+              domProps: { value: _vm.form.email },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "email", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-md-6 mb-4 m-auto" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-block btn-success",
+            on: { click: _vm.update }
+          },
+          [_vm._v(_vm._s(_vm.$t("Modifier mon compte")))]
+        ),
+        _vm._v(" "),
+        _c("hr", { staticClass: "my-3" }),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-block btn-primary mt-4" }, [
+          _vm._v(_vm._s(_vm.$t("Modifier mon mot de passe")))
+        ]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-block btn-danger mt-4" }, [
+          _vm._v(_vm._s(_vm.$t("Supprimer mon compte")))
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

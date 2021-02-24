@@ -6,6 +6,7 @@ use App\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller
 {
@@ -31,14 +32,30 @@ class AccountController extends Controller
    {
       $user = User::find(Auth::user()->id);
 
-      if (!$user) {
-         return response()->json(null, 400);
-      }
-      
-      $user->name = $request->name;
-      $user->email = $request->email;
-      $user->save();
+         $request->validate([
+            'phone' => ['required', 'regex:/[0-9]{10}/'],
+            'name' => ['required', 'string', 'max:255'],
+         ]);
 
+         if ($user->email != $request->email) {
+            $request->validate([
+               'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            ]);
+         }
+
+         $user->name = $request->name;
+         $user->email = $request->email;
+         $user->phone = $request->phone;
+         $user->save();
+         
+         return response()->json(null, 200);
+   }
+
+   public function delete()
+   {
+      $user = User::find(Auth::user()->id);
+
+      $user->delete();
       return response()->json(null, 200);
    }
 }

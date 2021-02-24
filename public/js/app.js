@@ -4867,6 +4867,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     update: function update() {
@@ -4893,6 +4900,8 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       })["catch"](function (err) {
+        console.log(err.response.data);
+
         if (document.documentElement.lang == 'fr') {
           _this.$notify({
             group: 'success',
@@ -4914,9 +4923,11 @@ __webpack_require__.r(__webpack_exports__);
   props: ['user'],
   data: function data() {
     return {
+      errors: [],
       form: {
         name: this.user.name,
-        email: this.user.email
+        email: this.user.email,
+        phone: '0' + this.user.phone
       }
     };
   }
@@ -43503,6 +43514,36 @@ var render = function() {
                       return
                     }
                     _vm.$set(_vm.form, "email", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+            _c("div", { staticClass: "md-form md-outline form-lg" }, [
+              _c("label", { attrs: { for: "form2" } }, [
+                _vm._v(_vm._s(_vm.$t("Téléphone")))
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.phone,
+                    expression: "form.phone"
+                  }
+                ],
+                staticClass: "form-control form-control-lg",
+                attrs: { type: "tel", id: "phone" },
+                domProps: { value: _vm.form.phone },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "phone", $event.target.value)
                   }
                 }
               })

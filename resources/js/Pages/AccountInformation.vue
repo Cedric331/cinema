@@ -21,6 +21,13 @@
         </div>
       </div>
 
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="md-form md-outline form-lg">
+           <label for="form2">{{$t('Téléphone')}}</label>
+          <input type="tel" id="phone" v-model="form.phone" class="form-control form-control-lg">
+        </div>
+      </div>
+
     </div>
       <div class="col-md-6 mb-4 m-auto">
         <button @click="update" class="btn btn-block btn-success">{{$t('Modifier mon compte')}}</button>
@@ -59,6 +66,7 @@ export default {
             }
       
         }).catch(err => {
+           console.log(err.response.data)
            if (document.documentElement.lang == 'fr') {
             this.$notify({
                group: 'success',
@@ -82,9 +90,11 @@ export default {
   props: ['user'],
      data() {
     return {
+       errors: [],
       form: {
         name: this.user.name,
         email: this.user.email,
+        phone: '0'+this.user.phone,
       },
     }
   },

@@ -4874,8 +4874,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
+    deleteUser: function deleteUser() {
+      axios({
+        method: 'get',
+        url: '/account/delete'
+      }).then(function (res) {
+        window.location = '/';
+      })["catch"](function (err) {});
+    },
     update: function update() {
       var _this = this;
 
@@ -4884,6 +4914,8 @@ __webpack_require__.r(__webpack_exports__);
         url: '/account/information',
         data: this.form
       }).then(function (res) {
+        _this.errors = '';
+
         if (document.documentElement.lang == 'fr') {
           _this.$notify({
             group: 'success',
@@ -4900,7 +4932,7 @@ __webpack_require__.r(__webpack_exports__);
           });
         }
       })["catch"](function (err) {
-        console.log(err.response.data);
+        _this.errors = err.response.data.errors;
 
         if (document.documentElement.lang == 'fr') {
           _this.$notify({
@@ -4920,10 +4952,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  props: ['user'],
+  props: ['user', 'url'],
   data: function data() {
     return {
-      errors: [],
+      errors: {},
       form: {
         name: this.user.name,
         email: this.user.email,
@@ -43449,129 +43481,219 @@ var render = function() {
         attrs: { group: "success", position: "right top" }
       }),
       _vm._v(" "),
-      _c("section", [
-        _c(
-          "h3",
-          {
-            staticClass:
-              "font-weight-normal text-center dark-grey-text my-4 pb-2"
-          },
-          [_vm._v(_vm._s(_vm.$t("Modification du compte")))]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "row d-flex justify-content-center" }, [
-          _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
-            _c("div", { staticClass: "md-form md-outline form-lg" }, [
-              _c("label", { attrs: { for: "form1" } }, [
-                _vm._v(_vm._s(_vm.$t("Nom")))
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.name,
-                    expression: "form.name"
-                  }
-                ],
-                staticClass: "form-control form-control-lg",
-                attrs: { type: "text", id: "first_name" },
-                domProps: { value: _vm.form.name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "name", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
-            _c("div", { staticClass: "md-form md-outline form-lg" }, [
-              _c("label", { attrs: { for: "form2" } }, [
-                _vm._v(_vm._s(_vm.$t("Email")))
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.email,
-                    expression: "form.email"
-                  }
-                ],
-                staticClass: "form-control form-control-lg",
-                attrs: { type: "text", id: "email" },
-                domProps: { value: _vm.form.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "email", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
-            _c("div", { staticClass: "md-form md-outline form-lg" }, [
-              _c("label", { attrs: { for: "form2" } }, [
-                _vm._v(_vm._s(_vm.$t("Téléphone")))
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.phone,
-                    expression: "form.phone"
-                  }
-                ],
-                staticClass: "form-control form-control-lg",
-                attrs: { type: "tel", id: "phone" },
-                domProps: { value: _vm.form.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "phone", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6 mb-4 m-auto" }, [
+      _c(
+        "section",
+        [
           _c(
-            "button",
+            "h3",
             {
-              staticClass: "btn btn-block btn-success",
-              on: { click: _vm.update }
+              staticClass:
+                "font-weight-normal text-center dark-grey-text my-4 pb-2"
             },
-            [_vm._v(_vm._s(_vm.$t("Modifier mon compte")))]
+            [_vm._v(_vm._s(_vm.$t("Modification du compte")))]
           ),
           _vm._v(" "),
-          _c("hr", { staticClass: "my-3" }),
+          _vm._l(_vm.errors, function(error) {
+            return _c(
+              "div",
+              {
+                key: error,
+                staticClass: "alert alert-danger",
+                attrs: { role: "alert" }
+              },
+              [
+                _c("strong", { staticClass: "m-auto" }, [
+                  _vm._v(_vm._s(error[0]))
+                ])
+              ]
+            )
+          }),
           _vm._v(" "),
-          _c("button", { staticClass: "btn btn-block btn-primary mt-4" }, [
-            _vm._v(_vm._s(_vm.$t("Modifier mon mot de passe")))
+          _c("div", { staticClass: "row d-flex justify-content-center" }, [
+            _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+              _c("div", { staticClass: "md-form md-outline form-lg" }, [
+                _c("label", { attrs: { for: "form1" } }, [
+                  _vm._v(_vm._s(_vm.$t("Nom")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.name,
+                      expression: "form.name"
+                    }
+                  ],
+                  staticClass: "form-control form-control-lg",
+                  attrs: { type: "text", id: "first_name", required: "" },
+                  domProps: { value: _vm.form.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "name", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+              _c("div", { staticClass: "md-form md-outline form-lg" }, [
+                _c("label", { attrs: { for: "form2" } }, [
+                  _vm._v(_vm._s(_vm.$t("E-mail")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.email,
+                      expression: "form.email"
+                    }
+                  ],
+                  staticClass: "form-control form-control-lg",
+                  attrs: { type: "email", id: "email", required: "" },
+                  domProps: { value: _vm.form.email },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "email", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-lg-3 mb-4" }, [
+              _c("div", { staticClass: "md-form md-outline form-lg" }, [
+                _c("label", { attrs: { for: "form2" } }, [
+                  _vm._v(_vm._s(_vm.$t("Téléphone")))
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.phone,
+                      expression: "form.phone"
+                    }
+                  ],
+                  staticClass: "form-control form-control-lg",
+                  attrs: { type: "tel", id: "phone", required: "" },
+                  domProps: { value: _vm.form.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.form, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ])
           ]),
           _vm._v(" "),
-          _c("button", { staticClass: "btn btn-block btn-danger mt-4" }, [
-            _vm._v(_vm._s(_vm.$t("Supprimer mon compte")))
+          _c("div", { staticClass: "col-md-6 mb-4 m-auto" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block btn-success",
+                on: { click: _vm.update }
+              },
+              [_vm._v(_vm._s(_vm.$t("Modifier mon compte")))]
+            ),
+            _vm._v(" "),
+            _c("hr", { staticClass: "my-3" }),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-block btn-primary mt-4",
+                attrs: { href: _vm.url }
+              },
+              [_vm._v(_vm._s(_vm.$t("Modifier mon mot de passe")))]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-block btn-danger mt-4",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#modalConfirmDelete"
+                }
+              },
+              [_vm._v(_vm._s(_vm.$t("Supprimer mon compte")))]
+            )
           ])
-        ])
-      ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "modalConfirmDelete",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "exampleModalLabel",
+            "aria-hidden": "true"
+          }
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-sm modal-notify modal-danger",
+              attrs: { role: "document" }
+            },
+            [
+              _c("div", { staticClass: "modal-content text-center" }, [
+                _c(
+                  "div",
+                  { staticClass: "modal-header d-flex justify-content-center" },
+                  [
+                    _c("p", { staticClass: "heading" }, [
+                      _vm._v(_vm._s(_vm.$t("Supprimer mon compte")) + "?")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer flex-center" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-danger",
+                      on: { click: _vm.deleteUser }
+                    },
+                    [_vm._v(_vm._s(_vm.$t("Oui")))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn  btn-danger waves-effect",
+                      attrs: { type: "button", "data-dismiss": "modal" }
+                    },
+                    [_vm._v(_vm._s(_vm.$t("Annuler")))]
+                  )
+                ])
+              ])
+            ]
+          )
+        ]
+      )
     ],
     1
   )
@@ -57586,6 +57708,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-i18n */ "./node_modules/vue-i18n/dist/vue-i18n.esm.js");
 /* harmony import */ var vue_notification__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-notification */ "./node_modules/vue-notification/dist/index.js");
 /* harmony import */ var vue_notification__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vue_notification__WEBPACK_IMPORTED_MODULE_4__);
+var _en, _fr;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -57601,7 +57727,7 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
   locale: document.documentElement.lang,
   fallbackLocale: document.documentElement.lang,
   messages: {
-    en: {
+    en: (_en = {
       "Panier": "Cart",
       "Nos Produits": "Our Products",
       "Ajouter": "Add",
@@ -57610,9 +57736,13 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
       "prix": "price",
       "Total de la commande": "Total order",
       "Commander": "Order",
-      "Panier vide": "Empty cart"
-    },
-    fr: {
+      "Panier vide": "Empty cart",
+      "Oui": "Yes",
+      "Non": "No",
+      "Téléphone": "Phone",
+      "Nom": "Name"
+    }, _defineProperty(_en, "T\xE9l\xE9phone", "Phone"), _defineProperty(_en, "Annuler", "Cancel"), _defineProperty(_en, "Modification du compte", "Change of account"), _defineProperty(_en, "Supprimer mon compte", "Delete my account"), _defineProperty(_en, "Modifier mon mot de passe", "Change my password"), _defineProperty(_en, "Modifier mon compte", "Modify my account"), _en),
+    fr: (_fr = {
       "Panier": "Panier",
       "Nos Produits": "Nos Produits",
       "Ajouter": "Ajouter",
@@ -57621,8 +57751,12 @@ var i18n = new vue_i18n__WEBPACK_IMPORTED_MODULE_3__["default"]({
       "prix": "prix",
       "Total de la commande": "Total de la commande",
       "Commander": "Commander",
-      "Panier vide": "Panier vide"
-    }
+      "Panier vide": "Panier vide",
+      "Oui": "Oui",
+      "Non": "Non",
+      "Téléphone": "Téléphone",
+      "Nom": "Nom"
+    }, _defineProperty(_fr, "T\xE9l\xE9phone", "Téléphone"), _defineProperty(_fr, "Annuler", "Annuler"), _defineProperty(_fr, "Modification du compte", "Modification du compte"), _defineProperty(_fr, "Supprimer mon compte", "Supprimer mon compte"), _defineProperty(_fr, "Modifier mon mot de passe", "Modifier mon mot de passe"), _defineProperty(_fr, "Modifier mon compte", "Modifier mon compte"), _fr)
   }
 });
 var el = document.getElementById('app');

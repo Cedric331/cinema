@@ -35,7 +35,7 @@
                          </div>
 
                         <div class="form-group row">
-                           <div class="col-md-8 col-sm-12">
+                           <div class="col-md-6 col-sm-12">
                               <label for="phone" class="col-form-label text-md-right">{{ __('Phone') }}</label>
                                <input id="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone">
 
@@ -47,9 +47,9 @@
                            </div>
                        </div>
 
-                       <hr class="my-4">
+                       {{-- <hr class="my-4"> --}}
 
-                       <h5 class="my-2">{{ __('Adresse') }} : </h5>
+                       {{-- <h5 class="my-2">{{ __('Adresse') }} : </h5>
 
                         <div class="row">
                            <div class="col">
@@ -111,7 +111,7 @@
                                   </span>
                               @enderror
                            </div>
-                         </div>
+                         </div> --}}
 
                         <hr class="my-4">
 

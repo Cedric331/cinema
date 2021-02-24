@@ -4,10 +4,13 @@ import { App, plugin } from '@inertiajs/inertia-vue'
 import Vue from 'vue'
 import { InertiaProgress } from '@inertiajs/progress'
 import VueI18n from 'vue-i18n'
+import Notifications from 'vue-notification'
 
 InertiaProgress.init()
+Vue.use(Notifications);
 Vue.use(VueI18n);
-Vue.use(plugin)
+Vue.use(plugin);
+
 
 export const i18n = new VueI18n({
    locale: document.documentElement.lang,

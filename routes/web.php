@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route qui permet de connaître la langue active
-// Route::get('locale', 'LocalizationController@getLang')->name('getlang');
+Route::get('/locale', 'LocalizationController@getLang')->name('getlang');
 
 // Route qui permet de modifier la langue
-Route::get('locale/{lang}', 'LocalizationController@setLang')->name('setlang');
+Route::get('/locale/{lang}', 'LocalizationController@setLang')->name('setlang');
 
 Route::get('/', function () {
     return view('home');

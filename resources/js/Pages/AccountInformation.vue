@@ -1,5 +1,8 @@
 <template>
+
 <div class="container z-depth-1 bg-light my-5 p-5">
+   <notifications class="mt-5" group="success" position="right top" />
+
   <section>
     <h3 class="font-weight-normal text-center dark-grey-text my-4 pb-2">{{$t('Modification du compte')}}</h3>
 
@@ -39,8 +42,38 @@ export default {
          url: '/account/information',
          data: this.form
          }).then(res => {
+            if (document.documentElement.lang == 'fr') {
+            this.$notify({
+               group: 'success',
+               type: 'success',
+               title: 'Modification du compte',
+               text: 'Vos informations sont à jour!'
+            });
+            } else {
+            this.$notify({
+               group: 'success',
+               type: 'success',
+               title: 'Update Account',
+               text: 'Your information is up to date!'
+            });
+            }
       
         }).catch(err => {
+           if (document.documentElement.lang == 'fr') {
+            this.$notify({
+               group: 'success',
+               type: 'warn',
+               title: 'Erreurs',
+               text: 'Oups il y a une erreur!'
+            });
+            } else {
+            this.$notify({
+               group: 'success',
+               type: 'warn',
+               title: 'Errors',
+               text: 'Oops there is an error!'
+            });
+            }
   
         })
      }

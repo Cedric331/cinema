@@ -85,13 +85,13 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li>
-                              <a class="dropdown-item" href="locale/fr">
+                              <a class="dropdown-item" href="/locale/fr">
                                  <img class="img-flag mr-2" src="{{ asset('/image/flag-french.png') }}">{{ __('Français') }}
                               </a>
                            </li>
                           <li><hr class="dropdown-divider"></li>
                           <li>
-                              <a class="dropdown-item" href="locale/en">
+                              <a class="dropdown-item" href="/locale/en">
                                  <img class="img-flag mr-2" src="{{ asset('/image/flag-gb.png') }}">{{ __('Anglais') }}
                               </a>
                            </li>

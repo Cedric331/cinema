@@ -10,39 +10,43 @@
                     <div class="view overlay rounded z-depth-2 mb-2">
                         <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
                         <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
-                           <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients" :key="ingredient.name">
-                              {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
-                           </div>
+                        <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients"
+                            :key="ingredient.name">
+                            {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
+                        </div>
                     </div>
                     <strong class="mb-1">{{$t('prix')}} : {{product.price.toFixed(2)}} €</strong>
                     <hr>
-                    <a @click="add(product.id)" class="btn btn-outline-success btn-rounded btn-md">{{ $t('Ajouter')}}</a>
+                    <a @click="add(product.id)"
+                        class="btn btn-outline-success btn-rounded btn-md">{{ $t('Ajouter')}}</a>
                 </div>
-                
             </div>
-            
+
         </section>
-        <cart v-if="auth" class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal" :key="count"></cart>
+
+        <cart v-if="auth" class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal"
+            :key="count"></cart>
+      
     </div>
 </template>
 <script>
     import Cart from './Cart'
     export default {
-         methods: {
-            add(id){
-               axios.post('/cart/add/'+id)
-               .then(res => {
-                   console.log(res.data)
-                  this.count++
-                  this.array = res.data[0]
-                  this.sumTotal = res.data[1]
-               }).catch(error => {
-                  if (error.response.status == 401) {
-                       window.location = '/login'
-                    }
-               })
+        methods: {
+            add(id) {
+                axios.post('/cart/add/' + id)
+                    .then(res => {
+                        console.log(res.data)
+                        this.count++
+                        this.array = res.data[0]
+                        this.sumTotal = res.data[1]
+                    }).catch(error => {
+                        if (error.response.status == 401) {
+                            window.location = '/login'
+                        }
+                    })
             }
-         },
+        },
 
         data() {
             return {
@@ -50,7 +54,7 @@
                 product: '',
                 sumTotal: this.total,
                 array: this.items,
-                count:0,
+                count: 0,
             }
         },
         props: ['listProducts', 'items', 'total', 'auth'],
@@ -60,3 +64,12 @@
     }
 
 </script>
+<style> 
+.component-fade-enter-active, .component-fade-leave-active {
+  transition: opacity .3s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active avant la 2.1.8 */ {
+  opacity: 0;
+}
+</style>

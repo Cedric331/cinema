@@ -9674,7 +9674,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scroll{\r\n  width: auto;\r\n  height: 400px;\r\n  overflow: auto;\n}\n.list-enter-active {\r\n  transition: all .1s ease;\n}\n.list-leave-active {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter, .list-leave-to\r\n/* .slide-leave-active below version 2.1.8 */ {\r\n  transform: translateY(30px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.scroll{\r\n  width: auto;\r\n  max-height: 400px;\r\n  overflow: auto;\n}\n.list-enter-active {\r\n  transition: all .1s ease;\n}\n.list-leave-active {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter, .list-leave-to\r\n/* .slide-leave-active below version 2.1.8 */ {\r\n  transform: translateY(30px);\r\n  opacity: 0;\n}\r\n", ""]);
 
 // exports
 

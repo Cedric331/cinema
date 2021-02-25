@@ -52,6 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'phone' => ['required','regex:/[0-9]{10}/'],
+            'g-recaptcha-response' => ['required','captcha'],
             // 'number' => ['required','regex:/[0-9]/', 'max:5'],
             // 'adress' => ['required', 'string', 'max:255'],
             // 'complement_adress' => ['string', 'max:255'],

@@ -100,7 +100,7 @@
 <style>
 .scroll{
   width: auto;
-  height: 400px;
+  max-height: 400px;
   overflow: auto;
 }
 .list-enter-active {

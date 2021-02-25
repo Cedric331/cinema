@@ -5170,6 +5170,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
@@ -44648,6 +44649,8 @@ var render = function() {
             _vm._v(_vm._s(_vm.$t("Nos Produits")))
           ]),
           _vm._v(" "),
+          _c("hr"),
+          _vm._v(" "),
           _c(
             "div",
             { staticClass: "row" },
@@ -44675,26 +44678,33 @@ var render = function() {
                         _c("strong", [_vm._v(_vm._s(product.name))])
                       ]),
                       _vm._v(" "),
-                      _vm._l(product.ingredients, function(ingredient, index) {
-                        return _c(
-                          "div",
-                          {
-                            key: ingredient.name,
-                            staticClass: "mask rgba-white-slight d-inline"
-                          },
-                          [
-                            _vm._v(
-                              "\n                            " +
-                                _vm._s(ingredient.name)
-                            ),
-                            index != product.ingredients.length - 1
-                              ? _c("em", [_vm._v(",")])
-                              : _vm._e()
-                          ]
-                        )
-                      })
-                    ],
-                    2
+                      _c(
+                        "div",
+                        { staticStyle: { "min-height": "50px" } },
+                        _vm._l(product.ingredients, function(
+                          ingredient,
+                          index
+                        ) {
+                          return _c(
+                            "div",
+                            {
+                              key: ingredient.name,
+                              staticClass: "mask rgba-white-slight d-inline"
+                            },
+                            [
+                              _vm._v(
+                                "\n                            " +
+                                  _vm._s(ingredient.name)
+                              ),
+                              index != product.ingredients.length - 1
+                                ? _c("em", [_vm._v(",")])
+                                : _vm._e()
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c("strong", { staticClass: "mb-1" }, [

@@ -3,16 +3,17 @@
 <notifications class="mt-5" group="success" position="left bottom" />
         <section class="dark-grey-text text-center col-sm-12 col-md-9">
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
-
+            <hr>
             <div class="row">
                 <div v-for="product in products" :key="product.id" class="col-lg-4 col-sm-12 col-md-6 mb-4">
-
                     <div class="view overlay rounded z-depth-2 mb-2">
                         <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
                         <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
+                        <div style="min-height: 50px;">
                         <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients"
                             :key="ingredient.name">
                             {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
+                        </div>
                         </div>
                     </div>
                     <strong class="mb-1">{{$t('prix')}} : {{product.price.toFixed(2)}} €</strong>

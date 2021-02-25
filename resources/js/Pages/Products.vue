@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid d-flex justify-content-around bg-light">
-
+<notifications class="mt-5" group="success" position="left bottom" />
         <section class="dark-grey-text text-center col-sm-12 col-md-9">
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
 
@@ -23,10 +23,8 @@
             </div>
 
         </section>
-
         <cart v-if="auth" class="d-none d-xxl-block bg-dark col-sm-12 col-md-3" :array="array" :sumTotal="sumTotal"
             :key="count"></cart>
-      
     </div>
 </template>
 <script>
@@ -36,7 +34,21 @@
             add(id) {
                 axios.post('/cart/add/' + id)
                     .then(res => {
-                        console.log(res.data)
+               if (document.documentElement.lang == 'fr') {
+                  this.$notify({
+                     group: 'success',
+                     type: 'success',
+                     title: 'Succès',
+                     text: 'Produit ajouté au panier!'
+                     });
+               } else {
+                  this.$notify({
+                     group: 'success',
+                     type: 'success',
+                     title: 'Success',
+                     text: 'Product added to shopping cart!'
+                     });
+                  }
                         this.count++
                         this.array = res.data[0]
                         this.sumTotal = res.data[1]
@@ -64,12 +76,3 @@
     }
 
 </script>
-<style> 
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s ease;
-}
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active avant la 2.1.8 */ {
-  opacity: 0;
-}
-</style>

@@ -3,13 +3,13 @@
         <h3 class="text-white text-center">{{ $t("Panier") }}</h3>
         <h5 class="text-center"><button v-if="total != '0,00'" @click="deleteCart()"
                 class="btn btn-secondary">{{ $t('Vider le Panier')}}</button></h5>
-        <hr class="text-white my-1">
+        <hr class="text-white my-4">
         <h5 v-if="total == '0,00'" class="mt-5 text-white text-center">{{$t('Panier vide')}}</h5>
 
-        <ul class="list-group my-3 text-center d-flex justify-content-center">
+        <ul class="list-group my-3 text-center p-3 scroll">
            <transition-group name="list" tag="p">
-            <li class="mb-2 bg-light p-2 position-relative" v-for="product in products" :key="product.id">
-                <button type="button" class="m-auto list-group-item list-group-item-action col-12">{{product.name}} -
+            <li class="mb-2 mt-4 bg-light p-2 position-relative" v-for="product in products" :key="product.id">
+                <button type="button" class="m-auto list-group-item list-group-item-action col-12 p-2">{{product.name}} -
                     {{ $t("quantité") }}: {{product.quantity}} - {{ $t("prix") }}:
                     {{product.price.toFixed(2)}}€</button>
                 <button v-if="product.quantity > 1" @click="deleteItem(product.id)"
@@ -88,7 +88,7 @@
         data() {
             return {
                 products: this.array,
-                total: this.sumTotal
+                total: this.sumTotal,
             }
         },
         props: ['array', 'sumTotal'],
@@ -97,19 +97,21 @@
 
 </script>
 
-<style> 
-
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
+<style>
+.scroll{
+  width: auto;
+  height: 400px;
+  overflow: auto;
 }
-.list-enter-active, .list-leave-active {
-   transition: all 1s;
+.list-enter-active {
+  transition: all .1s ease;
 }
-
-.list-item, .list-leave-to, .list-leave-active {
+.list-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.list-enter, .list-leave-to
+/* .slide-leave-active below version 2.1.8 */ {
+  transform: translateY(30px);
   opacity: 0;
-  transform: translateX(30px);
 }
-
 </style>

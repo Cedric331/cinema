@@ -72,31 +72,14 @@
                            </li> --}}
                         </ul>
                       </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                            <a class="nav-link" href="#">{{ __('Nous Contacter') }}</a>
-                        </li>
+                        </li> --}}
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                   <ul class="navbar-nav ml-auto">
-                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ __('Langue') }}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                          <li>
-                              <a class="dropdown-item" href="/locale/fr">
-                                 <img class="img-flag mr-2" src="{{ asset('/image/flag-french.png') }}">{{ __('Français') }}
-                              </a>
-                           </li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li>
-                              <a class="dropdown-item" href="/locale/en">
-                                 <img class="img-flag mr-2" src="{{ asset('/image/flag-gb.png') }}">{{ __('Anglais') }}
-                              </a>
-                           </li>
-                        </ul>
-                      </li>
+
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -108,6 +91,11 @@
                                 </li>
                             @endif
                         @else
+                        <li class="nav-item">
+                        <a href="{{ route('cart-index') }}" class="nav-link">
+                           {{ __('Mon Panier') }}
+                        </a>
+                        </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -116,9 +104,6 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                  <a href="{{ route('account-index') }}" class="dropdown-item">
                                     {{ __('Mon Compte') }}
-                                 </a>
-                                 <a href="{{ route('cart-index') }}" class="dropdown-item">
-                                    {{ __('Mon Panier') }}
                                  </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -136,6 +121,7 @@
                 </div>
             </div>
         </nav>
+
         <main>
          @if(!empty($page))
             @inertia
@@ -143,6 +129,14 @@
             @yield('content')
         </main>
     </div>
+
+    <div id="langue">
+      <a href="/locale/fr"><img class="img-flag mr-2" src="{{ asset('/image/flag-french.png') }}"></a>
+      <a  href="/locale/en">
+         <img class="img-flag mr-2" src="{{ asset('/image/flag-gb.png') }}">
+      </a>
+    </div>
+
     @yield('stripe-end')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
 </body>

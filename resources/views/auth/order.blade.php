@@ -7,8 +7,12 @@
    <section class="dark-grey-text text-center mb-5">
 
      <div class="card">
-      <h3 class="font-weight-bold mb-5">{{ __('Mes commandes') }}</h3>
+      <h3 class="font-weight-bold">{{ __('Mes commandes') }}</h3>
+      <hr class="my-2">
        <div class="card-body">
+          @if($orders->count() == 0)
+          <h4>Aucune commande</h4>
+          @else
          <table class="table table-responsive-md mb-0">
            <thead>
              <tr>
@@ -45,6 +49,7 @@
 
            </tbody>
          </table>
+         @endif
        </div>
      </div>
 

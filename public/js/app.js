@@ -5053,6 +5053,22 @@ __webpack_require__.r(__webpack_exports__);
         _this2.count++;
         _this2.products = res.data[0];
         _this2.total = res.data[1];
+
+        if (document.documentElement.lang == 'fr') {
+          _this2.$notify({
+            group: 'success',
+            type: 'warn',
+            title: 'Succès',
+            text: 'Produit supprimé du panier!'
+          });
+        } else {
+          _this2.$notify({
+            group: 'success',
+            type: 'warn',
+            title: 'Success',
+            text: 'Product removed from basket!'
+          });
+        }
       })["catch"](function (error) {
         if (error.response.status == 401) {
           window.location = '/login';

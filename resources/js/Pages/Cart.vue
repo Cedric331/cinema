@@ -54,6 +54,21 @@
                         this.count++
                         this.products = res.data[0]
                         this.total = res.data[1]
+                     if (document.documentElement.lang == 'fr') {
+                        this.$notify({
+                           group: 'success',
+                           type: 'warn',
+                           title: 'Succès',
+                           text: 'Produit supprimé du panier!'
+                           });
+                        } else {
+                        this.$notify({
+                           group: 'success',
+                           type: 'warn',
+                           title: 'Success',
+                           text: 'Product removed from basket!'
+                           });
+                        }
                     }).catch(error => {
                         if (error.response.status == 401) {
                             window.location = '/login'

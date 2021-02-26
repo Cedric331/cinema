@@ -5031,6 +5031,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   methods: {
     add: function add(id) {
@@ -9691,7 +9693,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scroll{\r\n  width: auto;\r\n  max-height: 400px;\r\n  overflow: auto;\n}\n.list-enter-active {\r\n  transition: all .1s ease;\n}\n.list-leave-active {\r\n  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter, .list-leave-to\r\n/* .slide-leave-active below version 2.1.8 */ {\r\n  transform: translateY(30px);\r\n  opacity: 0;\n}\r\n", ""]);
+exports.push([module.i, "\n.scroll {\n    width: auto;\n    max-height: 400px;\n    overflow: auto;\n}\n.list-enter-active {\n    transition: all .1s ease;\n}\n.list-leave-active {\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter,\n.list-leave-to\n\n/* .slide-leave-active below version 2.1.8 */\n    {\n    transform: translateY(30px);\n    opacity: 0;\n}\n\n", ""]);
 
 // exports
 
@@ -44430,167 +44432,175 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("h3", { staticClass: "text-white text-center" }, [
-      _vm._v(_vm._s(_vm.$t("Panier")))
-    ]),
-    _vm._v(" "),
-    _c("h5", { staticClass: "text-center" }, [
-      _vm.total != "0,00"
-        ? _c(
-            "button",
-            {
-              staticClass: "btn btn-secondary",
-              on: {
-                click: function($event) {
-                  return _vm.deleteCart()
-                }
-              }
-            },
-            [_vm._v(_vm._s(_vm.$t("Vider le Panier")))]
-          )
-        : _vm._e()
-    ]),
-    _vm._v(" "),
-    _c("hr", { staticClass: "text-white my-4" }),
-    _vm._v(" "),
-    _vm.total == "0,00"
-      ? _c("h5", { staticClass: "mt-5 text-white text-center" }, [
-          _vm._v(_vm._s(_vm.$t("Panier vide")))
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "list-group my-3 text-center p-3 scroll" },
-      [
-        _c(
-          "transition-group",
-          { attrs: { name: "list", tag: "p" } },
-          _vm._l(_vm.products, function(product) {
-            return _c(
-              "li",
+  return _c(
+    "div",
+    [
+      _c("notifications", {
+        attrs: { group: "success", position: "left bottom" }
+      }),
+      _vm._v(" "),
+      _c("h3", { staticClass: "text-white text-center" }, [
+        _vm._v(_vm._s(_vm.$t("Panier")))
+      ]),
+      _vm._v(" "),
+      _c("h5", { staticClass: "text-center" }, [
+        _vm.total != "0,00"
+          ? _c(
+              "button",
               {
-                key: product.id,
-                staticClass: "mb-2 mt-4 bg-light p-2 position-relative"
+                staticClass: "btn btn-secondary",
+                on: {
+                  click: function($event) {
+                    return _vm.deleteCart()
+                  }
+                }
               },
-              [
-                _c(
-                  "button",
-                  {
-                    staticClass:
-                      "m-auto list-group-item list-group-item-action col-12 p-2",
-                    attrs: { type: "button" }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(product.name) +
-                        " -\n                " +
-                        _vm._s(_vm.$t("quantité")) +
-                        ": " +
-                        _vm._s(product.quantity) +
-                        " - " +
-                        _vm._s(_vm.$t("prix")) +
-                        ":\n                " +
-                        _vm._s(product.price.toFixed(2)) +
-                        "€"
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                product.quantity > 1
-                  ? _c(
-                      "button",
-                      {
-                        staticClass:
-                          "position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
-                        staticStyle: { "font-size": "10px" },
-                        on: {
-                          click: function($event) {
-                            return _vm.deleteItem(product.id)
-                          }
-                        }
-                      },
-                      [_vm._v("X")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                product.quantity > 1
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-warning mt-2 btn-sm col-2",
-                        on: {
-                          click: function($event) {
-                            return _vm.remove(product.id)
-                          }
-                        }
-                      },
-                      [_vm._v("-")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                product.quantity == 1
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger mt-2 btn-sm col-2",
-                        on: {
-                          click: function($event) {
-                            return _vm.remove(product.id)
-                          }
-                        }
-                      },
-                      [_c("i", { staticClass: "fas fa-trash" })]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-success mt-2 btn-sm col-2",
-                    on: {
-                      click: function($event) {
-                        return _vm.add(product.id)
-                      }
-                    }
-                  },
-                  [_vm._v("+")]
-                )
-              ]
+              [_vm._v(_vm._s(_vm.$t("Vider le Panier")))]
             )
-          }),
-          0
-        )
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _vm.total != "0,00"
-      ? _c("hr", { staticClass: "text-white my-1" })
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.total != "0,00"
-      ? _c("h5", { staticClass: "text-white my-2" }, [
-          _vm._v(
-            _vm._s(_vm.$t("Total de la commande")) +
-              ": " +
-              _vm._s(_vm.total) +
-              "€"
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("hr", { staticClass: "text-white my-4" }),
+      _vm._v(" "),
+      _vm.total == "0,00"
+        ? _c("h5", { staticClass: "mt-5 text-white text-center" }, [
+            _vm._v(_vm._s(_vm.$t("Panier vide")))
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "list-group my-3 text-center p-3 scroll" },
+        [
+          _c(
+            "transition-group",
+            { attrs: { name: "list", tag: "p" } },
+            _vm._l(_vm.products, function(product) {
+              return _c(
+                "li",
+                {
+                  key: product.id,
+                  staticClass: "mb-2 mt-4 bg-light p-2 position-relative"
+                },
+                [
+                  _c(
+                    "button",
+                    {
+                      staticClass:
+                        "m-auto list-group-item list-group-item-action col-12 p-2",
+                      attrs: { type: "button" }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(product.name) +
+                          " -\n                    " +
+                          _vm._s(_vm.$t("quantité")) +
+                          ": " +
+                          _vm._s(product.quantity) +
+                          " - " +
+                          _vm._s(_vm.$t("prix")) +
+                          ":\n                    " +
+                          _vm._s(product.price.toFixed(2)) +
+                          "€"
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  product.quantity > 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass:
+                            "position-absolute btn-sm top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-1",
+                          staticStyle: { "font-size": "10px" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteItem(product.id)
+                            }
+                          }
+                        },
+                        [_vm._v("X")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  product.quantity > 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-warning mt-2 btn-sm col-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.remove(product.id)
+                            }
+                          }
+                        },
+                        [_vm._v("-")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  product.quantity == 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger mt-2 btn-sm col-2",
+                          on: {
+                            click: function($event) {
+                              return _vm.remove(product.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fas fa-trash" })]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success mt-2 btn-sm col-2",
+                      on: {
+                        click: function($event) {
+                          return _vm.add(product.id)
+                        }
+                      }
+                    },
+                    [_vm._v("+")]
+                  )
+                ]
+              )
+            }),
+            0
           )
-        ])
-      : _vm._e(),
-    _vm._v(" "),
-    _c("div", { staticClass: "text-center" }, [
+        ],
+        1
+      ),
+      _vm._v(" "),
       _vm.total != "0,00"
-        ? _c(
-            "a",
-            { staticClass: "btn btn-light mt-2", attrs: { href: "/order" } },
-            [_vm._v(_vm._s(_vm.$t("Commander")))]
-          )
-        : _vm._e()
-    ])
-  ])
+        ? _c("hr", { staticClass: "text-white my-1" })
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.total != "0,00"
+        ? _c("h5", { staticClass: "text-white my-2" }, [
+            _vm._v(
+              _vm._s(_vm.$t("Total de la commande")) +
+                ": " +
+                _vm._s(_vm.total) +
+                "€"
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center" }, [
+        _vm.total != "0,00"
+          ? _c(
+              "a",
+              { staticClass: "btn btn-light mt-2", attrs: { href: "/order" } },
+              [_vm._v(_vm._s(_vm.$t("Commander")))]
+            )
+          : _vm._e()
+      ])
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -44653,7 +44663,6 @@ var render = function() {
     { staticClass: "container-fluid d-flex justify-content-around bg-light" },
     [
       _c("notifications", {
-        staticClass: "mt-5",
         attrs: { group: "success", position: "left bottom" }
       }),
       _vm._v(" "),

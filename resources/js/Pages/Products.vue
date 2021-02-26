@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid d-flex justify-content-around bg-light">
-<notifications class="mt-5" group="success" position="left bottom" />
+        <notifications group="success" position="left bottom" />
         <section class="dark-grey-text text-center col-sm-12 col-md-9">
             <h2 class="font-weight-bold mb-4 mt-2 pb-2">{{ $t("Nos Produits") }}</h2>
             <hr>
@@ -10,10 +10,10 @@
                         <img class="img-fluid imageProduct" :src="'/image/products/'+product.image" :alt="product.name">
                         <h4 class="font-weight-bold mb-3"><strong>{{product.name}}</strong></h4>
                         <div style="min-height: 50px;">
-                        <div class="mask rgba-white-slight d-inline" v-for="(ingredient, index) in product.ingredients"
-                            :key="ingredient.name">
-                            {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
-                        </div>
+                            <div class="mask rgba-white-slight d-inline"
+                                v-for="(ingredient, index) in product.ingredients" :key="ingredient.name">
+                                {{ ingredient.name }}<em v-if="index != product.ingredients.length-1">,</em>
+                            </div>
                         </div>
                     </div>
                     <strong class="mb-1">{{$t('prix')}} : {{product.price.toFixed(2)}} €</strong>
@@ -35,21 +35,21 @@
             add(id) {
                 axios.post('/cart/add/' + id)
                     .then(res => {
-               if (document.documentElement.lang == 'fr') {
-                  this.$notify({
-                     group: 'success',
-                     type: 'success',
-                     title: 'Succès',
-                     text: 'Produit ajouté au panier!'
-                     });
-               } else {
-                  this.$notify({
-                     group: 'success',
-                     type: 'success',
-                     title: 'Success',
-                     text: 'Product added to shopping cart!'
-                     });
-                  }
+                        if (document.documentElement.lang == 'fr') {
+                            this.$notify({
+                                group: 'success',
+                                type: 'success',
+                                title: 'Succès',
+                                text: 'Produit ajouté au panier!'
+                            });
+                        } else {
+                            this.$notify({
+                                group: 'success',
+                                type: 'success',
+                                title: 'Success',
+                                text: 'Product added to shopping cart!'
+                            });
+                        }
                         this.count++
                         this.array = res.data[0]
                         this.sumTotal = res.data[1]
@@ -60,7 +60,6 @@
                     })
             }
         },
-
         data() {
             return {
                 products: this.listProducts,

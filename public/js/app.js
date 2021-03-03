@@ -9693,7 +9693,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.scroll {\n    width: auto;\n    max-height: 400px;\n    overflow: auto;\n}\n.list-enter-active {\n    transition: all .1s ease;\n}\n.list-leave-active {\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter,\n.list-leave-to\n\n/* .slide-leave-active below version 2.1.8 */\n    {\n    transform: translateY(30px);\n    opacity: 0;\n}\n\n", ""]);
+exports.push([module.i, "\n.scroll {\n    width: auto;\n    max-height: 400px;\n    overflow: auto;\n}\n.list-enter-active {\n    transition: all .1s ease;\n}\n.list-leave-active {\n    transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);\n}\n.list-enter,\n.list-leave-to\n    {\n    transform: translateY(30px);\n    opacity: 0;\n}\n\n", ""]);
 
 // exports
 

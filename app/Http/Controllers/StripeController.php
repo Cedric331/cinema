@@ -17,7 +17,7 @@ class StripeController extends Controller
 
    public function index()
    {
-      $YOUR_DOMAIN = 'http://localhost:8000';
+      $YOUR_DOMAIN = 'https://www.pizzeria.limacedric.com';
 
       $items = \Cart::session(Auth::user()->id)->getContent();
       $products = [];

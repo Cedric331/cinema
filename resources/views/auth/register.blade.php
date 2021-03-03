@@ -180,7 +180,6 @@
                         </div>
 
                     </form>
-                    <em class="text-danger mt-2">*{{ __('Facultatif') }}</em>
                 </div>
             </div>
         </div>
